@@ -1,5 +1,19 @@
 import Contact from '../models/Contact.js';
 
+export const getContactMessages = async (_req, res, next) => {
+  try {
+    const contacts = await Contact.find().sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: contacts.length,
+      data: contacts
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createContactMessage = async (req, res, next) => {
   try {
     const { name, email, subject, message } = req.body;
