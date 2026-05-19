@@ -11,7 +11,8 @@ export default {
         mint: '#34d399'
       },
       boxShadow: {
-        glow: '0 0 45px rgba(56, 189, 248, 0.16)'
+        glow: '0 0 45px rgba(56, 189, 248, 0.16)',
+        glass: '0 24px 80px rgba(0, 0, 0, 0.28)'
       }
     }
   },
