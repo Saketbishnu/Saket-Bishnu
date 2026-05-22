@@ -1,4 +1,5 @@
 import Contact from '../models/Contact.js';
+import { sendContactEmail } from '../config/mailer.js';
 
 export const getContactMessages = async (_req, res, next) => {
   try {
@@ -25,9 +26,32 @@ export const createContactMessage = async (req, res, next) => {
       message
     });
 
+    try {
+      await sendContactEmail({ name, email, subject, message });
+    } catch (emailError) {
+      console.error('Contact email failed:', emailError.message);
+
+      res.status(201).json({
+        success: true,
+        emailSent: false,
+        message:
+          'Contact message saved successfully, but email notification failed',
+        error: emailError.message,
+        data: {
+          id: contact._id,
+          name: contact.name,
+          email: contact.email,
+          subject: contact.subject,
+          createdAt: contact.createdAt
+        }
+      });
+      return;
+    }
+
     res.status(201).json({
       success: true,
-      message: 'Contact message saved successfully',
+      emailSent: true,
+      message: 'Contact message saved and email sent successfully',
       data: {
         id: contact._id,
         name: contact.name,
