@@ -425,17 +425,23 @@ function Contact() {
     message: ''
   });
   const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [fieldErrors, setFieldErrors] = useState({ email: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, validity } = event.target;
     setFormData((current) => ({ ...current, [name]: value }));
+
+    if (name === 'email' && fieldErrors.email && validity.valid) {
+      setFieldErrors((current) => ({ ...current, email: '' }));
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: 'idle', message: '' });
+    setFieldErrors({ email: '' });
 
     try {
       await sendContactMessage(formData);
@@ -451,6 +457,16 @@ function Contact() {
           error.response?.data?.message ||
           'Could not send message. Please check the backend server.'
       });
+
+      if (
+        error.response?.status === 400 &&
+        error.response?.data?.message === 'Please enter a valid email address'
+      ) {
+        setFieldErrors({
+          email: error.response.data.message
+        });
+        setStatus({ type: 'idle', message: '' });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -514,14 +530,25 @@ function Contact() {
             <label className="block">
               <span className="text-sm font-bold text-slate-200">Email</span>
               <input
-                className={inputClass}
+                className={`${inputClass} ${
+                  fieldErrors.email
+                    ? 'border-red-400 focus:border-red-300 focus:ring-red-300/10'
+                    : ''
+                }`}
                 name="email"
                 type="email"
                 placeholder="you@example.com"
                 value={formData.email}
                 onChange={handleChange}
                 required
+                aria-invalid={fieldErrors.email ? 'true' : 'false'}
+                aria-describedby={fieldErrors.email ? 'email-error' : undefined}
               />
+              {fieldErrors.email && (
+                <p id="email-error" className="mt-2 text-sm text-red-300">
+                  {fieldErrors.email}
+                </p>
+              )}
             </label>
           </div>
 

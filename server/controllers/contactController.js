@@ -1,3 +1,4 @@
+import validator from 'validator';
 import Contact from '../models/Contact.js';
 import { sendContactEmail } from '../config/mailer.js';
 
@@ -18,16 +19,25 @@ export const getContactMessages = async (_req, res, next) => {
 export const createContactMessage = async (req, res, next) => {
   try {
     const { name, email, subject, message } = req.body;
+    const normalizedEmail = String(email || '').trim();
+
+    if (!validator.isEmail(normalizedEmail)) {
+      res.status(400).json({
+        success: false,
+        message: 'Please enter a valid email address'
+      });
+      return;
+    }
 
     const contact = await Contact.create({
       name,
-      email,
+      email: normalizedEmail,
       subject,
       message
     });
 
     try {
-      await sendContactEmail({ name, email, subject, message });
+      await sendContactEmail({ name, email: normalizedEmail, subject, message });
     } catch (emailError) {
       console.error('Contact email failed:', emailError.message);
 
