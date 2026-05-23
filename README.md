@@ -178,8 +178,7 @@ Current Goal:
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Saketbishnu/Saketbishnu/output/github-contribution-grid-snake.svg"/>
-
+<img src="https://raw.githubusercontent.com/Saketbishnu/Saket-Bishnu/output/github-contribution-grid-snake.svg"/>
 </div>
 
 ---
