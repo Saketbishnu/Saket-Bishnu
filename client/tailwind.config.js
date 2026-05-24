@@ -12,7 +12,9 @@ export default {
       },
       boxShadow: {
         glow: '0 0 45px rgba(56, 189, 248, 0.16)',
-        glass: '0 24px 80px rgba(0, 0, 0, 0.28)'
+        glass: '0 24px 80px rgba(0, 0, 0, 0.28)',
+        'neon-cyan': '0 0 28px rgba(34, 211, 238, 0.28)',
+        'neon-pink': '0 0 28px rgba(217, 70, 239, 0.22)'
       }
     }
   },

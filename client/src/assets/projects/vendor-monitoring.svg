@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Vendor Monitoring project placeholder">
+  <rect width="1200" height="675" fill="#020617"/>
+  <rect x="190" y="190" width="820" height="360" rx="24" fill="#0f172a" stroke="#22d3ee" stroke-width="5"/>
+  <path d="M285 455V330M435 455V270M585 455V365M735 455V245M885 455V310" stroke="#34d399" stroke-width="34" stroke-linecap="round"/>
+  <path d="M275 305c120 25 230-75 330-20s170-5 285-85" fill="none" stroke="#d946ef" stroke-width="10" stroke-linecap="round"/>
+  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">Vendor Performance</text>
+  <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">Monitoring System</text>
+</svg>

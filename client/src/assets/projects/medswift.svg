@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="MedSwift project placeholder">
+  <rect width="1200" height="675" fill="#020617"/>
+  <path d="M230 430c120-165 270-250 450-250 147 0 253 56 320 168" fill="none" stroke="#22d3ee" stroke-width="14" stroke-linecap="round"/>
+  <path d="M308 432h564" stroke="#34d399" stroke-width="22" stroke-linecap="round"/>
+  <path d="M820 372l78 60-78 60" fill="none" stroke="#d946ef" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">MedSwift</text>
+  <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">Fast Healthcare Access</text>
+</svg>
