@@ -7,7 +7,7 @@
   font-family:
     Inter, "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #020617;
+  background: #080303;
 }
 
 html {
@@ -17,7 +17,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #020617;
+  background: #080303;
   background-attachment: fixed;
 }
 
@@ -26,7 +26,13 @@ body {
 }
 
 ::selection {
-  background: rgba(56, 189, 248, 0.35);
+  background: rgba(239, 68, 68, 0.36);
+  color: #fff7f7;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(248, 113, 113, 0.75);
+  outline-offset: 4px;
 }
 
 @layer components {
@@ -35,7 +41,7 @@ body {
     border-radius: 0.25rem;
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
-      rgba(2, 6, 23, 0.72);
+      rgba(8, 3, 3, 0.72);
     box-shadow:
       0 24px 80px rgba(0, 0, 0, 0.34),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -47,14 +53,14 @@ body {
   .project-card {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(34, 211, 238, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.2);
     border-radius: 0.25rem;
     background:
-      linear-gradient(135deg, rgba(34, 211, 238, 0.075), rgba(217, 70, 239, 0.055)),
-      rgba(2, 6, 23, 0.76);
+      linear-gradient(135deg, rgba(239, 68, 68, 0.085), rgba(244, 63, 94, 0.055)),
+      rgba(8, 3, 3, 0.78);
     box-shadow:
       0 24px 90px rgba(0, 0, 0, 0.38),
-      0 0 42px rgba(34, 211, 238, 0.08),
+      0 0 42px rgba(239, 68, 68, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(34px);
   }
@@ -66,7 +72,7 @@ body {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.12), transparent),
+      linear-gradient(90deg, transparent, rgba(248, 113, 113, 0.14), transparent),
       linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 100% 100%, 100% 18px;
     opacity: 0.38;
@@ -82,27 +88,27 @@ body {
   }
 
   .project-card:hover {
-    border-color: rgba(34, 211, 238, 0.48);
+    border-color: rgba(248, 113, 113, 0.5);
     box-shadow:
       0 30px 100px rgba(0, 0, 0, 0.46),
-      0 0 44px rgba(34, 211, 238, 0.18),
-      0 0 34px rgba(217, 70, 239, 0.12);
+      0 0 44px rgba(239, 68, 68, 0.2),
+      0 0 34px rgba(244, 63, 94, 0.14);
   }
 
   .neon-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(34, 211, 238, 0.42);
+    border: 1px solid rgba(248, 113, 113, 0.5);
     border-radius: 0.25rem;
     background:
-      linear-gradient(90deg, rgba(34, 211, 238, 0.95), rgba(52, 211, 153, 0.92)),
-      #22d3ee;
-    color: #020617;
+      linear-gradient(90deg, rgba(248, 113, 113, 0.96), rgba(225, 29, 72, 0.94)),
+      #ef4444;
+    color: #fff7f7;
     font-weight: 900;
     box-shadow:
-      0 0 24px rgba(34, 211, 238, 0.34),
-      0 16px 48px rgba(34, 211, 238, 0.22);
+      0 0 24px rgba(239, 68, 68, 0.36),
+      0 16px 48px rgba(127, 29, 29, 0.32);
     transition:
       transform 180ms ease,
       box-shadow 180ms ease,
@@ -113,9 +119,9 @@ body {
     transform: translateY(-2px);
     filter: saturate(1.12);
     box-shadow:
-      0 0 34px rgba(34, 211, 238, 0.5),
-      0 0 34px rgba(52, 211, 153, 0.22),
-      0 18px 54px rgba(34, 211, 238, 0.25);
+      0 0 34px rgba(248, 113, 113, 0.52),
+      0 0 34px rgba(225, 29, 72, 0.26),
+      0 18px 54px rgba(127, 29, 29, 0.34);
   }
 
   .neon-button:disabled {
@@ -126,12 +132,12 @@ body {
 
   .neon-kicker {
     display: inline-flex;
-    border: 1px solid rgba(34, 211, 238, 0.28);
+    border: 1px solid rgba(248, 113, 113, 0.34);
     border-radius: 999px;
-    background: rgba(34, 211, 238, 0.08);
+    background: rgba(239, 68, 68, 0.1);
     padding: 0.5rem 1rem;
-    color: #a5f3fc;
-    box-shadow: 0 0 28px rgba(34, 211, 238, 0.16);
+    color: #fecdd3;
+    box-shadow: 0 0 28px rgba(239, 68, 68, 0.18);
     font-size: 0.75rem;
     font-weight: 900;
     letter-spacing: 0.26em;
@@ -141,8 +147,8 @@ body {
 
 .cyber-grid {
   background-image:
-    linear-gradient(rgba(34, 211, 238, 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.11) 1px, transparent 1px);
+    linear-gradient(rgba(239, 68, 68, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 113, 113, 0.09) 1px, transparent 1px);
   background-size: 48px 48px;
   animation: grid-drift 18s linear infinite;
   mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 72%, transparent 100%);
@@ -157,6 +163,30 @@ body {
     transparent 6px
   );
   opacity: 0.18;
+}
+
+.cyber-noise {
+  background-image:
+    linear-gradient(115deg, rgba(239, 68, 68, 0.04), transparent 32%),
+    linear-gradient(245deg, rgba(244, 63, 94, 0.035), transparent 34%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @keyframes grid-drift {

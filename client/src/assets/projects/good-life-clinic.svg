@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Good Life Clinic project placeholder">
-  <rect width="1200" height="675" fill="#020617"/>
-  <rect x="170" y="190" width="860" height="330" rx="24" fill="#0f172a" stroke="#22d3ee" stroke-width="4"/>
-  <path d="M600 260v190M505 355h190" stroke="#34d399" stroke-width="34" stroke-linecap="round"/>
-  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">Good Life Clinic</text>
+  <rect width="1200" height="675" fill="#080303"/>
+  <rect x="170" y="190" width="860" height="330" rx="24" fill="#12070a" stroke="#ef4444" stroke-width="4"/>
+  <path d="M600 260v190M505 355h190" stroke="#f87171" stroke-width="34" stroke-linecap="round"/>
+  <text x="80" y="120" fill="#fecdd3" font-family="Arial" font-size="46" font-weight="700">Good Life Clinic</text>
   <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">Healthcare Web Platform</text>
 </svg>

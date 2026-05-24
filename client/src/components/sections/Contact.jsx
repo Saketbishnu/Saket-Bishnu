@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { sendContactMessage } from '../../api/contactApi.js';
 import { profile } from '../../data/profile.js';
+import GlassCard from '../ui/GlassCard.jsx';
+import NeonButton from '../ui/NeonButton.jsx';
 import Section, { fadeUp } from '../ui/Section.jsx';
 
 export default function Contact() {
@@ -60,7 +62,7 @@ export default function Contact() {
   };
 
   const inputClass =
-    'mt-2 w-full rounded border border-cyan-300/15 bg-slate-950/70 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/10';
+    'mt-2 w-full rounded border border-red-400/15 bg-zinc-950/70 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-red-400 focus:ring-4 focus:ring-red-400/10 focus:shadow-[0_0_28px_rgba(239,68,68,0.12)]';
 
   return (
     <Section
@@ -70,9 +72,9 @@ export default function Contact() {
       description={profile.contact.description}
     >
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <motion.div variants={fadeUp} className="cyber-card p-6">
+        <GlassCard as={motion.div} variants={fadeUp} interactive className="p-6">
           <h3 className="text-xl font-black text-white">Signal Details</h3>
-          <p className="mt-4 leading-7 text-slate-400">
+          <p className="mt-4 leading-7 text-zinc-400">
             Messages travel from the React interface into the Express API, then
             into MongoDB and Gmail SMTP.
           </p>
@@ -80,27 +82,28 @@ export default function Contact() {
             {profile.contact.details.map(([label, value]) => (
               <div
                 key={label}
-                className="rounded border border-cyan-300/15 bg-cyan-300/[0.05] p-4"
+                className="rounded border border-red-400/15 bg-red-400/[0.05] p-4"
               >
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-cyan-200/70">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-rose-200/70">
                   {label}
                 </p>
-                <p className="mt-1 break-words font-semibold text-slate-200">
+                <p className="mt-1 break-words font-semibold text-zinc-200">
                   {value}
                 </p>
               </div>
             ))}
           </div>
-        </motion.div>
+        </GlassCard>
 
-        <motion.form
+        <GlassCard
+          as={motion.form}
           variants={fadeUp}
-          className="terminal-panel p-5 sm:p-6"
+          className="p-5 sm:p-6"
           onSubmit={handleSubmit}
         >
           <div className="grid gap-5 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-sm font-bold text-slate-200">Name</span>
+            <motion.label whileFocus={{ y: -2 }} className="block">
+              <span className="text-sm font-bold text-zinc-200">Name</span>
               <input
                 className={inputClass}
                 name="name"
@@ -109,9 +112,9 @@ export default function Contact() {
                 onChange={handleChange}
                 required
               />
-            </label>
-            <label className="block">
-              <span className="text-sm font-bold text-slate-200">Email</span>
+            </motion.label>
+            <motion.label whileFocus={{ y: -2 }} className="block">
+              <span className="text-sm font-bold text-zinc-200">Email</span>
               <input
                 className={`${inputClass} ${
                   fieldErrors.email
@@ -132,11 +135,11 @@ export default function Contact() {
                   {fieldErrors.email}
                 </p>
               )}
-            </label>
+            </motion.label>
           </div>
 
-          <label className="mt-5 block">
-            <span className="text-sm font-bold text-slate-200">Subject</span>
+          <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
+            <span className="text-sm font-bold text-zinc-200">Subject</span>
             <input
               className={inputClass}
               name="subject"
@@ -145,10 +148,10 @@ export default function Contact() {
               onChange={handleChange}
               required
             />
-          </label>
+          </motion.label>
 
-          <label className="mt-5 block">
-            <span className="text-sm font-bold text-slate-200">Message</span>
+          <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
+            <span className="text-sm font-bold text-zinc-200">Message</span>
             <textarea
               className={`${inputClass} min-h-40 resize-y`}
               name="message"
@@ -157,28 +160,30 @@ export default function Contact() {
               onChange={handleChange}
               required
             />
-          </label>
+          </motion.label>
 
-          <button
-            className="neon-button mt-6 w-full px-5 py-3"
+          <NeonButton
+            className="mt-6 w-full px-5 py-3"
             type="submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
+            {isSubmitting ? 'Sending signal...' : 'Send Message'}
+          </NeonButton>
 
           {status.message && (
-            <p
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
               className={`mt-4 rounded border px-4 py-3 text-sm ${
                 status.type === 'success'
-                  ? 'border-emerald-300/25 bg-emerald-300/10 text-emerald-200'
+                  ? 'border-red-300/25 bg-red-300/10 text-rose-200'
                   : 'border-red-400/25 bg-red-500/10 text-red-200'
               }`}
             >
               {status.message}
-            </p>
+            </motion.p>
           )}
-        </motion.form>
+        </GlassCard>
       </div>
     </Section>
   );

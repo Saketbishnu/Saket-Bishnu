@@ -69,9 +69,14 @@ export const profile = {
     description:
       'The contact form keeps the MERN flow intact with Axios, Express, MongoDB, validation, and Nodemailer notifications.',
     details: [
-      ['Email', 'saket@example.com'],
+      ['Email', 'saketbsn@gmail.com'],
       ['API', 'localhost:5000/api/contact'],
       ['Location', 'India']
-    ]
+    ],
+    links: {
+      github: 'https://github.com/Saketbishnu',
+      linkedin: 'https://www.linkedin.com/in/saket-bishnu-00769a269/',
+      email: 'mailto:saketbsn@gmail.com'
+    }
   }
 };

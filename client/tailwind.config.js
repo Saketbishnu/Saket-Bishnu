@@ -4,17 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#050816',
-        panel: '#0b1020',
-        line: '#1f2a44',
-        cyan: '#38bdf8',
-        mint: '#34d399'
+        ink: '#080303',
+        panel: '#12070a',
+        line: '#3f151c',
+        crimson: '#dc2626',
+        ruby: '#e11d48',
+        silver: '#e5e7eb',
+        soft: '#f8fafc'
       },
       boxShadow: {
-        glow: '0 0 45px rgba(56, 189, 248, 0.16)',
+        glow: '0 0 45px rgba(239, 68, 68, 0.18)',
         glass: '0 24px 80px rgba(0, 0, 0, 0.28)',
-        'neon-cyan': '0 0 28px rgba(34, 211, 238, 0.28)',
-        'neon-pink': '0 0 28px rgba(217, 70, 239, 0.22)'
+        'neon-red': '0 0 30px rgba(239, 68, 68, 0.34)',
+        'neon-ruby': '0 0 30px rgba(225, 29, 72, 0.28)'
       }
     }
   },

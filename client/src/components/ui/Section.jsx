@@ -1,22 +1,7 @@
 import { motion } from 'framer-motion';
-
-export const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08
-    }
-  }
-};
-
-export const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  }
-};
+import { container, fadeUp, revealViewport } from './motion.js';
+import SectionHeader from './SectionHeader.jsx';
+export { container, fadeUp } from './motion.js';
 
 export default function Section({ id, eyebrow, title, description, children }) {
   return (
@@ -25,20 +10,10 @@ export default function Section({ id, eyebrow, title, description, children }) {
       className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 py-16 sm:px-6 sm:py-20 lg:px-8"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.18 }}
+      viewport={revealViewport}
       variants={container}
     >
-      <motion.div variants={fadeUp} className="max-w-3xl">
-        <p className="neon-kicker">{eyebrow}</p>
-        <h2 className="mt-4 text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-          {title}
-        </h2>
-        {description && (
-          <p className="mt-4 text-base leading-8 text-slate-400 sm:text-lg">
-            {description}
-          </p>
-        )}
-      </motion.div>
+      <SectionHeader eyebrow={eyebrow} title={title} description={description} />
       <motion.div variants={fadeUp} className="mt-10">
         {children}
       </motion.div>

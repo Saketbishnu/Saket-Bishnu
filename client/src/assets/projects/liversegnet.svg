@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="LiverSegNet project placeholder">
-  <rect width="1200" height="675" fill="#020617"/>
+  <rect width="1200" height="675" fill="#080303"/>
   <path d="M0 560C210 440 300 590 514 464c178-105 275-286 486-221 86 27 141 91 200 154v278H0Z" fill="#0e7490" opacity=".42"/>
-  <circle cx="816" cy="264" r="142" fill="#22d3ee" opacity=".16"/>
-  <path d="M284 338c61-141 259-184 400-97 58 36 95 89 122 151-71 54-169 71-280 60-111-10-194-47-242-114Z" fill="#d946ef" opacity=".55"/>
-  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">LiverSegNet</text>
+  <circle cx="816" cy="264" r="142" fill="#ef4444" opacity=".16"/>
+  <path d="M284 338c61-141 259-184 400-97 58 36 95 89 122 151-71 54-169 71-280 60-111-10-194-47-242-114Z" fill="#be123c" opacity=".55"/>
+  <text x="80" y="120" fill="#fecdd3" font-family="Arial" font-size="46" font-weight="700">LiverSegNet</text>
   <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">Surgical Vision AI</text>
 </svg>

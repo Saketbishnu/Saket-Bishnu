@@ -15,7 +15,7 @@ export default function ProjectScreenshots({ project }) {
       <div className="grid gap-5 md:grid-cols-2">
         {screenshots.map((screenshot, index) => (
           <motion.div key={`${screenshot}-${index}`} variants={fadeUp} className="terminal-panel p-4">
-            <div className="aspect-video rounded border border-cyan-300/15 bg-slate-950/70">
+            <div className="aspect-video rounded border border-red-400/15 bg-zinc-950/70">
               <ProjectImage
                 src={screenshot}
                 alt={`${project.title} screenshot ${index + 1}`}

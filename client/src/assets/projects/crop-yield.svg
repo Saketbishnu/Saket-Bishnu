@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Crop Yield project placeholder">
-  <rect width="1200" height="675" fill="#020617"/>
+  <rect width="1200" height="675" fill="#080303"/>
   <path d="M0 520c210-130 375-130 600 0s390 130 600 0v155H0z" fill="#14532d"/>
-  <path d="M300 485c10-110 45-190 105-240 60 50 95 130 105 240M600 485c10-130 55-230 135-300 80 70 125 170 135 300" fill="none" stroke="#34d399" stroke-width="12"/>
-  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">Crop Yield Prediction</text>
+  <path d="M300 485c10-110 45-190 105-240 60 50 95 130 105 240M600 485c10-130 55-230 135-300 80 70 125 170 135 300" fill="none" stroke="#f87171" stroke-width="12"/>
+  <text x="80" y="120" fill="#fecdd3" font-family="Arial" font-size="46" font-weight="700">Crop Yield Prediction</text>
   <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">Machine Learning Agriculture</text>
 </svg>

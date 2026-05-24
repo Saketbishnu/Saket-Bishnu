@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Fraud Detection project placeholder">
-  <rect width="1200" height="675" fill="#020617"/>
-  <rect x="230" y="238" width="740" height="300" rx="28" fill="#0f172a" stroke="#22d3ee" stroke-width="5"/>
+  <rect width="1200" height="675" fill="#080303"/>
+  <rect x="230" y="238" width="740" height="300" rx="28" fill="#12070a" stroke="#ef4444" stroke-width="5"/>
   <path d="M300 330h210M300 390h360M300 450h180" stroke="#64748b" stroke-width="18" stroke-linecap="round"/>
-  <path d="m792 310 85 85-85 85-85-85z" fill="#d946ef" opacity=".65"/>
-  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">Credit Card Fraud Detection</text>
+  <path d="m792 310 85 85-85 85-85-85z" fill="#be123c" opacity=".65"/>
+  <text x="80" y="120" fill="#fecdd3" font-family="Arial" font-size="46" font-weight="700">Credit Card Fraud Detection</text>
   <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">FinTech Machine Learning</text>
 </svg>

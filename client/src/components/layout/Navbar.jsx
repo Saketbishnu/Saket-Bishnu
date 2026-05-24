@@ -1,17 +1,48 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { profile } from '../../data/profile.js';
+import NeonButton from '../ui/NeonButton.jsx';
 
 const navItems = ['About', 'Skills', 'Projects', 'Achievements', 'Contact'];
+const socialLinks = [
+  ['GitHub', profile.contact.links.github],
+  ['LinkedIn', profile.contact.links.linkedin]
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 12);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isHome = location.pathname === '/';
+  const isNavItemActive = (item) => {
+    const hash = `#${item.toLowerCase()}`;
+    return isHome && (location.hash === hash || (!location.hash && item === 'About'));
+  };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-cyan-300/15 bg-slate-950/62 shadow-[0_18px_70px_rgba(0,0,0,0.38)] backdrop-blur-2xl">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-2xl transition duration-300 ${
+        isScrolled
+          ? 'border-red-400/20 bg-zinc-950/78 shadow-[0_18px_70px_rgba(0,0,0,0.42)]'
+          : 'border-red-400/10 bg-zinc-950/48'
+      }`}
+    >
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded border border-cyan-300/30 bg-cyan-300/10 font-black text-cyan-100 shadow-neon-cyan transition group-hover:border-fuchsia-300/50 group-hover:text-fuchsia-100">
+          <span className="grid h-10 w-10 place-items-center rounded border border-red-400/30 bg-red-400/10 font-black text-rose-100 shadow-neon-red transition group-hover:border-rose-400/50 group-hover:text-rose-100 group-hover:shadow-neon-ruby">
             SB
           </span>
           <span className="text-sm font-black uppercase tracking-[0.26em] text-white">
@@ -21,7 +52,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded border border-cyan-300/25 bg-white/[0.04] text-cyan-100 shadow-neon-cyan md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded border border-red-400/25 bg-white/[0.06] text-rose-100 shadow-neon-red backdrop-blur-xl md:hidden"
           aria-label="Toggle navigation"
           onClick={() => setIsOpen((current) => !current)}
         >
@@ -32,46 +63,93 @@ export default function Navbar() {
           </span>
         </button>
 
-        <div className="hidden items-center gap-2 rounded border border-white/10 bg-white/[0.04] p-1.5 backdrop-blur-xl md:flex">
+        <div className="hidden items-center gap-2 rounded border border-white/10 bg-white/[0.055] p-1.5 shadow-glass backdrop-blur-xl md:flex">
           {navItems.map((item) => (
             <a
               key={item}
               href={`/#${item.toLowerCase()}`}
-              className="rounded px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-cyan-300/10 hover:text-cyan-100 hover:shadow-[0_0_24px_rgba(34,211,238,0.18)]"
+              className={`group relative rounded px-3 py-2 text-sm font-semibold transition hover:bg-red-400/10 hover:text-rose-100 hover:shadow-[0_0_24px_rgba(239,68,68,0.18)] ${
+                isNavItemActive(item)
+                  ? 'bg-red-400/10 text-rose-100 shadow-[0_0_24px_rgba(239,68,68,0.16)]'
+                  : isHome
+                    ? 'text-zinc-300'
+                    : 'text-zinc-400'
+              }`}
             >
               {item}
+              <span
+                className={`absolute inset-x-3 -bottom-0.5 h-px origin-left bg-gradient-to-r from-red-400 to-red-300 transition duration-300 ${
+                  isNavItemActive(item) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
             </a>
           ))}
-          <Link to="/resume" className="neon-button px-4 py-2 text-sm">
+          <NeonButton
+            to="/resume"
+            className={`px-4 py-2 text-sm ${location.pathname === '/resume' ? 'shadow-neon-ruby' : ''}`}
+          >
             Resume
-          </Link>
+          </NeonButton>
+          <div className="flex items-center gap-1 border-l border-white/10 pl-2">
+            {socialLinks.map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded px-2.5 py-2 text-xs font-black uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-red-400/10 hover:text-rose-100 hover:shadow-neon-red"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
       {isOpen && (
         <motion.div
-          className="border-t border-cyan-300/15 bg-slate-950/95 px-5 pb-5 backdrop-blur-xl md:hidden"
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="border-t border-red-400/15 bg-zinc-950/95 px-5 pb-5 shadow-glass backdrop-blur-2xl md:hidden"
+          initial={{ opacity: 0, y: -10, height: 0 }}
+          animate={{ opacity: 1, y: 0, height: 'auto' }}
+          exit={{ opacity: 0, y: -10, height: 0 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
         >
           <div className="flex flex-col gap-2 pt-4">
             {navItems.map((item) => (
               <a
                 key={item}
                 href={`/#${item.toLowerCase()}`}
-                className="rounded border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-200"
+                className={`rounded border px-4 py-3 text-sm font-semibold transition hover:border-red-400/30 hover:text-rose-100 ${
+                  isNavItemActive(item)
+                    ? 'border-red-400/30 bg-red-400/10 text-rose-100'
+                    : 'border-white/10 bg-white/[0.05] text-zinc-200'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <Link
+            <NeonButton
               to="/resume"
-              className="neon-button px-4 py-3 text-sm"
+              className="px-4 py-3 text-sm"
               onClick={() => setIsOpen(false)}
             >
               Resume
-            </Link>
+            </NeonButton>
+            <div className="grid grid-cols-2 gap-2">
+              {socialLinks.map(([label, href]) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded border border-white/10 bg-white/[0.05] px-4 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-zinc-300 transition hover:border-red-400/30 hover:text-rose-100"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
         </motion.div>
       )}

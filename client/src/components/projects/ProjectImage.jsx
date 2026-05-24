@@ -5,7 +5,7 @@ export default function ProjectImage({ src, alt, className = '' }) {
 
   if (!src || imageFailed) {
     return (
-      <div className={`flex items-center justify-center bg-slate-950/70 px-5 text-center text-sm font-bold text-slate-500 ${className}`}>
+      <div className={`flex items-center justify-center bg-zinc-950/70 px-5 text-center text-sm font-bold text-zinc-500 ${className}`}>
         Project image coming soon
       </div>
     );

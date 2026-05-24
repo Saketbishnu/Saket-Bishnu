@@ -16,7 +16,7 @@ export default function ProjectTechStack({ project }) {
             {project.techStack.map((item) => (
               <span
                 key={item}
-                className="rounded border border-cyan-300/15 bg-cyan-300/[0.06] px-3 py-1 text-xs font-semibold text-cyan-100"
+                className="rounded border border-red-400/15 bg-red-400/[0.06] px-3 py-1 text-xs font-semibold text-rose-100"
               >
                 {item}
               </span>
@@ -26,7 +26,7 @@ export default function ProjectTechStack({ project }) {
 
         <motion.div variants={fadeUp} className="cyber-card p-6">
           <h3 className="text-xl font-black text-white">Challenges Solved</h3>
-          <ul className="mt-4 space-y-3 text-slate-400">
+          <ul className="mt-4 space-y-3 text-zinc-400">
             {project.challenges.map((challenge) => (
               <li key={challenge} className="leading-7">
                 {challenge}

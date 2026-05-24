@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="GenAI Video Retrieval project placeholder">
-  <rect width="1200" height="675" fill="#020617"/>
-  <rect x="250" y="210" width="700" height="360" rx="28" fill="#0f172a" stroke="#22d3ee" stroke-width="5"/>
-  <path d="m545 310 160 80-160 80z" fill="#34d399"/>
-  <circle cx="870" cy="245" r="80" fill="#d946ef" opacity=".25"/>
-  <path d="M815 245h110M870 190v110" stroke="#f0abfc" stroke-width="10" stroke-linecap="round"/>
-  <text x="80" y="120" fill="#a5f3fc" font-family="Arial" font-size="46" font-weight="700">GenAI Video Retrieval</text>
+  <rect width="1200" height="675" fill="#080303"/>
+  <rect x="250" y="210" width="700" height="360" rx="28" fill="#12070a" stroke="#ef4444" stroke-width="5"/>
+  <path d="m545 310 160 80-160 80z" fill="#f87171"/>
+  <circle cx="870" cy="245" r="80" fill="#be123c" opacity=".25"/>
+  <path d="M815 245h110M870 190v110" stroke="#ffe4e6" stroke-width="10" stroke-linecap="round"/>
+  <text x="80" y="120" fill="#fecdd3" font-family="Arial" font-size="46" font-weight="700">GenAI Video Retrieval</text>
   <text x="80" y="172" fill="#e2e8f0" font-family="Arial" font-size="24">Knowledge Search System</text>
 </svg>
