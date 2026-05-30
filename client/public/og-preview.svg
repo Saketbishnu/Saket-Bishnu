@@ -1,27 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
     <radialGradient id="glow" cx="70%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#ef4444" stop-opacity=".38"/>
-      <stop offset="48%" stop-color="#881337" stop-opacity=".24"/>
-      <stop offset="100%" stop-color="#080303" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#2563eb" stop-opacity=".38"/>
+      <stop offset="48%" stop-color="#1e3a8a" stop-opacity=".24"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="text" x1="0%" x2="100%">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="52%" stop-color="#fecdd3"/>
-      <stop offset="100%" stop-color="#ef4444"/>
+      <stop offset="52%" stop-color="#bfdbfe"/>
+      <stop offset="100%" stop-color="#2563eb"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="#080303"/>
+  <rect width="1200" height="630" fill="#0f172a"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
-  <path d="M0 508h1200" stroke="#ef4444" stroke-width="2" opacity=".45"/>
+  <path d="M0 508h1200" stroke="#2563eb" stroke-width="2" opacity=".45"/>
   <path d="M0 122h1200" stroke="#ffffff" stroke-width="1" opacity=".08"/>
-  <g opacity=".16" stroke="#ef4444">
+  <g opacity=".16" stroke="#2563eb">
     <path d="M80 0v630M220 0v630M360 0v630M500 0v630M640 0v630M780 0v630M920 0v630M1060 0v630"/>
     <path d="M0 90h1200M0 210h1200M0 330h1200M0 450h1200M0 570h1200"/>
   </g>
-  <text x="86" y="170" fill="#fecdd3" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="7">SOFTWARE / ML / FULL STACK</text>
+  <text x="86" y="170" fill="#bfdbfe" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="7">SOFTWARE / ML / FULL STACK</text>
   <text x="82" y="300" fill="url(#text)" font-family="Inter, Arial, sans-serif" font-size="84" font-weight="900">Saket Bishnu</text>
   <text x="86" y="380" fill="#e5e7eb" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">Premium AI and software engineering portfolio</text>
-  <rect x="86" y="454" width="260" height="54" rx="6" fill="#ef4444" opacity=".92"/>
-  <text x="118" y="489" fill="#fff7f7" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="900">View Projects</text>
+  <rect x="86" y="454" width="260" height="54" rx="6" fill="#2563eb" opacity=".92"/>
+  <text x="118" y="489" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="900">View Projects</text>
 </svg>

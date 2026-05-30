@@ -9,11 +9,11 @@ import { resume } from '../data/resume.js';
 
 export default function Resume() {
   return (
-    <div className="min-h-screen overflow-hidden text-zinc-100">
+    <div className="min-h-screen overflow-hidden text-slate-900">
       <CyberBackground />
       <Navbar />
       <motion.main
-        className="min-h-screen px-5 py-28 text-zinc-100"
+        className="min-h-screen px-5 py-28 text-slate-900"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
@@ -35,7 +35,7 @@ export default function Resume() {
               View Resume
             </NeonButton>
             <a
-              className="rounded border border-rose-400/30 bg-white/[0.04] px-5 py-3 text-sm font-black text-rose-100 shadow-neon-ruby transition hover:-translate-y-0.5 hover:border-red-400/40"
+              className="rounded border border-blue-500/30 bg-white/[0.04] px-5 py-3 text-sm font-black text-blue-700 shadow-glow transition hover:-translate-y-0.5 hover:border-blue-500/40"
               href={resume.url}
               download={resume.fileName}
             >
@@ -47,7 +47,7 @@ export default function Resume() {
             <iframe
               title={resume.title}
               src={resume.url}
-              className="h-[70vh] w-full rounded border border-red-400/15 bg-zinc-950/70"
+              className="h-[70vh] w-full rounded border border-blue-500/15 bg-white/90"
             />
           </GlassCard>
         </section>

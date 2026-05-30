@@ -8,8 +8,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-red-400/15 bg-zinc-950/70 px-5 py-8 text-sm text-zinc-500 backdrop-blur-xl">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-red-400/70 to-transparent" />
+    <footer className="relative border-t border-blue-900 bg-slate-950 px-5 py-8 text-sm text-blue-100/70">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent" />
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
         <p>(c) {new Date().getFullYear()} Saket Bishnu. Built with MERN.</p>
         <div className="flex flex-wrap justify-center gap-3">
@@ -19,7 +19,7 @@ export default function Footer() {
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noreferrer' : undefined}
-              className="rounded border border-white/10 bg-white/[0.04] px-3 py-1.5 font-bold text-zinc-300 transition hover:border-red-400/30 hover:text-rose-100 hover:shadow-neon-red"
+              className="rounded border border-white/10 bg-white/[0.06] px-3 py-1.5 font-bold text-blue-100 transition hover:border-blue-300/40 hover:bg-white/10 hover:text-white"
             >
               {label}
             </a>

@@ -16,19 +16,19 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="min-h-screen overflow-hidden text-zinc-100">
+      <div className="min-h-screen overflow-hidden text-slate-900">
         <CyberBackground />
         <Navbar />
         <motion.main
-          className="min-h-screen px-5 py-32 text-zinc-100"
+          className="min-h-screen px-5 py-32 text-slate-900"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
         >
           <GlassCard as="section" className="mx-auto max-w-6xl p-8">
             <p className="neon-kicker">Project Detail</p>
-            <h1 className="mt-4 text-4xl font-black text-white">Project Not Found</h1>
-            <p className="mt-4 max-w-2xl text-zinc-400">
+            <h1 className="mt-4 text-4xl font-black text-slate-900">Project Not Found</h1>
+            <p className="mt-4 max-w-2xl text-slate-600">
               The requested project does not exist yet.
             </p>
             <Link className="neon-button mt-6 px-5 py-3 text-sm" to="/">
@@ -42,7 +42,7 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="min-h-screen overflow-hidden text-zinc-100">
+    <div className="min-h-screen overflow-hidden text-slate-900">
       <CyberBackground />
       <Navbar />
       <motion.main
@@ -52,27 +52,27 @@ export default function ProjectDetail() {
       >
         <ProjectDetailHero project={project} />
         <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
-          <GlassCard className="p-5 sm:p-6">
-            <div className="grid gap-4 text-sm sm:grid-cols-3">
-              <div>
-                <p className="font-mono text-xs font-black uppercase tracking-[0.2em] text-rose-200/70">
+          <GlassCard className="p-4 sm:p-6">
+            <div className="grid min-w-0 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-3">
+              <div className="min-w-0">
+                <p className="font-mono text-xs font-black uppercase tracking-[0.16em] text-blue-700/70 sm:tracking-[0.2em]">
                   Category
                 </p>
-                <p className="mt-2 font-bold text-white">{project.category}</p>
+                <p className="mt-2 break-words font-bold text-slate-900">{project.category}</p>
               </div>
-              <div>
-                <p className="font-mono text-xs font-black uppercase tracking-[0.2em] text-rose-200/70">
+              <div className="min-w-0">
+                <p className="font-mono text-xs font-black uppercase tracking-[0.16em] text-blue-700/70 sm:tracking-[0.2em]">
                   Stack
                 </p>
-                <p className="mt-2 font-bold text-white">
+                <p className="mt-2 break-words font-bold text-slate-900">
                   {project.techStack.slice(0, 3).join(' / ')}
                 </p>
               </div>
-              <div>
-                <p className="font-mono text-xs font-black uppercase tracking-[0.2em] text-rose-200/70">
+              <div className="min-w-0 sm:col-span-2 lg:col-span-1">
+                <p className="font-mono text-xs font-black uppercase tracking-[0.16em] text-blue-700/70 sm:tracking-[0.2em]">
                   Status
                 </p>
-                <p className="mt-2 font-bold text-white">Case study ready</p>
+                <p className="mt-2 font-bold text-slate-900">Case study ready</p>
               </div>
             </div>
           </GlassCard>

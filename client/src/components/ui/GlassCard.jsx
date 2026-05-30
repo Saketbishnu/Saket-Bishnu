@@ -8,7 +8,7 @@ export default function GlassCard({
   ...props
 }) {
   const interactiveClass = interactive
-    ? 'transition duration-300 hover:-translate-y-1 hover:border-red-400/40 hover:shadow-neon-red'
+    ? 'transition duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-glow'
     : '';
 
   return (

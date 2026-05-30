@@ -62,7 +62,7 @@ export default function Contact() {
   };
 
   const inputClass =
-    'mt-2 w-full rounded border border-red-400/15 bg-zinc-950/70 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-red-400 focus:ring-4 focus:ring-red-400/10 focus:shadow-[0_0_28px_rgba(239,68,68,0.12)]';
+    'mt-2 w-full rounded border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10';
 
   return (
     <Section
@@ -73,8 +73,8 @@ export default function Contact() {
     >
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
         <GlassCard as={motion.div} variants={fadeUp} interactive className="p-6">
-          <h3 className="text-xl font-black text-white">Signal Details</h3>
-          <p className="mt-4 leading-7 text-zinc-400">
+          <h3 className="text-xl font-black text-slate-950">Contact Details</h3>
+          <p className="mt-4 leading-7 text-slate-600">
             Messages travel from the React interface into the Express API, then
             into MongoDB and Gmail SMTP.
           </p>
@@ -82,12 +82,12 @@ export default function Contact() {
             {profile.contact.details.map(([label, value]) => (
               <div
                 key={label}
-                className="rounded border border-red-400/15 bg-red-400/[0.05] p-4"
+                className="rounded border border-blue-500/15 bg-blue-500/[0.05] p-4"
               >
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-rose-200/70">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-700/70">
                   {label}
                 </p>
-                <p className="mt-1 break-words font-semibold text-zinc-200">
+                <p className="mt-1 break-words font-semibold text-slate-700">
                   {value}
                 </p>
               </div>
@@ -103,7 +103,7 @@ export default function Contact() {
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <motion.label whileFocus={{ y: -2 }} className="block">
-              <span className="text-sm font-bold text-zinc-200">Name</span>
+              <span className="text-sm font-bold text-slate-700">Name</span>
               <input
                 className={inputClass}
                 name="name"
@@ -114,11 +114,11 @@ export default function Contact() {
               />
             </motion.label>
             <motion.label whileFocus={{ y: -2 }} className="block">
-              <span className="text-sm font-bold text-zinc-200">Email</span>
+              <span className="text-sm font-bold text-slate-700">Email</span>
               <input
                 className={`${inputClass} ${
                   fieldErrors.email
-                    ? 'border-red-400 focus:border-red-300 focus:ring-red-300/10'
+                    ? 'border-blue-500 focus:border-blue-400 focus:ring-blue-400/10'
                     : ''
                 }`}
                 name="email"
@@ -131,7 +131,7 @@ export default function Contact() {
                 aria-describedby={fieldErrors.email ? 'email-error' : undefined}
               />
               {fieldErrors.email && (
-                <p id="email-error" className="mt-2 text-sm text-red-300">
+                <p id="email-error" className="mt-2 text-sm text-blue-400">
                   {fieldErrors.email}
                 </p>
               )}
@@ -139,7 +139,7 @@ export default function Contact() {
           </div>
 
           <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
-            <span className="text-sm font-bold text-zinc-200">Subject</span>
+            <span className="text-sm font-bold text-slate-700">Subject</span>
             <input
               className={inputClass}
               name="subject"
@@ -151,7 +151,7 @@ export default function Contact() {
           </motion.label>
 
           <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
-            <span className="text-sm font-bold text-zinc-200">Message</span>
+            <span className="text-sm font-bold text-slate-700">Message</span>
             <textarea
               className={`${inputClass} min-h-40 resize-y`}
               name="message"
@@ -176,8 +176,8 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               className={`mt-4 rounded border px-4 py-3 text-sm ${
                 status.type === 'success'
-                  ? 'border-red-300/25 bg-red-300/10 text-rose-200'
-                  : 'border-red-400/25 bg-red-500/10 text-red-200'
+                  ? 'border-blue-200 bg-blue-50 text-blue-700'
+                  : 'border-red-200 bg-red-50 text-red-700'
               }`}
             >
               {status.message}

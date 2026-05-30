@@ -3,7 +3,7 @@ import footballYoloImage from '../assets/projects/football-yolo.svg';
 import fraudDetectionImage from '../assets/projects/fraud-detection.svg';
 import genaiVideoImage from '../assets/projects/genai-video.svg';
 import goodLifeClinicImage from '../assets/projects/good-life-clinic.svg';
-import liversegnetImage from '../assets/projects/liversegnet.svg';
+import liversegnetImage from '../assets/projects/liversegnet.png';
 import medswiftImage from '../assets/projects/medswift.svg';
 import vendorMonitoringImage from '../assets/projects/vendor-monitoring.svg';
 
@@ -36,8 +36,7 @@ export const projects = [
       'Maintaining segmentation quality across varied image conditions',
       'Presenting model output in an interpretable format'
     ],
-    image: liversegnetImage,
-    screenshots: [liversegnetImage],
+    images: [liversegnetImage, liversegnetImage, liversegnetImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -69,8 +68,7 @@ export const projects = [
       'Managing overlapping players and occlusion',
       'Improving detection consistency in match footage'
     ],
-    image: footballYoloImage,
-    screenshots: [footballYoloImage],
+    images: [footballYoloImage, footballYoloImage, footballYoloImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -102,8 +100,7 @@ export const projects = [
       'Keeping the user journey simple',
       'Structuring services and contact information clearly'
     ],
-    image: goodLifeClinicImage,
-    screenshots: [goodLifeClinicImage],
+    images: [goodLifeClinicImage, goodLifeClinicImage, goodLifeClinicImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -135,8 +132,7 @@ export const projects = [
       'Structuring scalable feature modules',
       'Balancing usability with professional presentation'
     ],
-    image: medswiftImage,
-    screenshots: [medswiftImage],
+    images: [medswiftImage, medswiftImage, medswiftImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -168,8 +164,7 @@ export const projects = [
       'Selecting meaningful predictive features',
       'Improving model reliability across conditions'
     ],
-    image: cropYieldImage,
-    screenshots: [cropYieldImage],
+    images: [cropYieldImage, cropYieldImage, cropYieldImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -201,8 +196,7 @@ export const projects = [
       'Reducing false positives and false negatives',
       'Evaluating model performance beyond basic accuracy'
     ],
-    image: fraudDetectionImage,
-    screenshots: [fraudDetectionImage],
+    images: [fraudDetectionImage, fraudDetectionImage, fraudDetectionImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -234,8 +228,7 @@ export const projects = [
       'Improving retrieval relevance',
       'Designing a usable AI query workflow'
     ],
-    image: genaiVideoImage,
-    screenshots: [genaiVideoImage],
+    images: [genaiVideoImage, genaiVideoImage, genaiVideoImage],
     githubUrl: '',
     liveUrl: ''
   },
@@ -267,8 +260,7 @@ export const projects = [
       'Making performance data easy to scan',
       'Designing scalable monitoring workflows'
     ],
-    image: vendorMonitoringImage,
-    screenshots: [vendorMonitoringImage],
+    images: [vendorMonitoringImage, vendorMonitoringImage, vendorMonitoringImage],
     githubUrl: '',
     liveUrl: ''
   }

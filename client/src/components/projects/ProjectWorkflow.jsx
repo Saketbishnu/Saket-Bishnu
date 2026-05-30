@@ -12,12 +12,12 @@ export default function ProjectWorkflow({ project }) {
       >
         <div className="grid gap-5 lg:grid-cols-2">
           <motion.div variants={fadeUp} className="cyber-card p-6">
-            <h3 className="text-xl font-black text-white">Detailed Description</h3>
-            <p className="mt-4 leading-7 text-zinc-400">{project.description}</p>
+            <h3 className="text-xl font-black text-slate-900">Detailed Description</h3>
+            <p className="mt-4 leading-7 text-slate-600">{project.description}</p>
           </motion.div>
           <motion.div variants={fadeUp} className="cyber-card p-6">
-            <h3 className="text-xl font-black text-white">Features</h3>
-            <ul className="mt-4 space-y-3 text-zinc-400">
+            <h3 className="text-xl font-black text-slate-900">Features</h3>
+            <ul className="mt-4 space-y-3 text-slate-600">
               {project.features.map((feature) => (
                 <li key={feature} className="leading-7">
                   {feature}
@@ -41,10 +41,10 @@ export default function ProjectWorkflow({ project }) {
               variants={fadeUp}
               className="glass-panel flex gap-4 p-5"
             >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded border border-red-400/25 bg-red-400/10 font-mono text-sm font-black text-rose-100">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded border border-blue-500/25 bg-blue-500/10 font-mono text-sm font-black text-blue-700">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <p className="leading-7 text-zinc-300">{step}</p>
+              <p className="leading-7 text-slate-700">{step}</p>
             </motion.div>
           ))}
         </div>

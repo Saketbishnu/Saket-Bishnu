@@ -36,13 +36,13 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-2xl transition duration-300 ${
         isScrolled
-          ? 'border-red-400/20 bg-zinc-950/78 shadow-[0_18px_70px_rgba(0,0,0,0.42)]'
-          : 'border-red-400/10 bg-zinc-950/48'
+          ? 'border-blue-300/20 bg-slate-950/95 shadow-[0_18px_60px_rgba(15,23,42,0.24)]'
+          : 'border-blue-300/10 bg-slate-950/90'
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded border border-red-400/30 bg-red-400/10 font-black text-rose-100 shadow-neon-red transition group-hover:border-rose-400/50 group-hover:text-rose-100 group-hover:shadow-neon-ruby">
+          <span className="grid h-10 w-10 place-items-center rounded border border-blue-300/30 bg-white/10 font-black text-white transition group-hover:border-blue-200/60 group-hover:bg-blue-500/20">
             SB
           </span>
           <span className="text-sm font-black uppercase tracking-[0.26em] text-white">
@@ -52,7 +52,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded border border-red-400/25 bg-white/[0.06] text-rose-100 shadow-neon-red backdrop-blur-xl md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded border border-blue-300/25 bg-white/10 text-white backdrop-blur-xl md:hidden"
           aria-label="Toggle navigation"
           onClick={() => setIsOpen((current) => !current)}
         >
@@ -63,22 +63,22 @@ export default function Navbar() {
           </span>
         </button>
 
-        <div className="hidden items-center gap-2 rounded border border-white/10 bg-white/[0.055] p-1.5 shadow-glass backdrop-blur-xl md:flex">
+        <div className="hidden items-center gap-2 rounded border border-white/10 bg-white/10 p-1.5 backdrop-blur-xl md:flex">
           {navItems.map((item) => (
             <a
               key={item}
               href={`/#${item.toLowerCase()}`}
-              className={`group relative rounded px-3 py-2 text-sm font-semibold transition hover:bg-red-400/10 hover:text-rose-100 hover:shadow-[0_0_24px_rgba(239,68,68,0.18)] ${
+              className={`group relative rounded px-3 py-2 text-sm font-semibold transition hover:bg-white/10 hover:text-white ${
                 isNavItemActive(item)
-                  ? 'bg-red-400/10 text-rose-100 shadow-[0_0_24px_rgba(239,68,68,0.16)]'
+                  ? 'bg-white/[0.12] text-white'
                   : isHome
-                    ? 'text-zinc-300'
-                    : 'text-zinc-400'
+                    ? 'text-blue-100'
+                    : 'text-blue-100/75'
               }`}
             >
               {item}
               <span
-                className={`absolute inset-x-3 -bottom-0.5 h-px origin-left bg-gradient-to-r from-red-400 to-red-300 transition duration-300 ${
+                className={`absolute inset-x-3 -bottom-0.5 h-px origin-left bg-gradient-to-r from-blue-200 to-white transition duration-300 ${
                   isNavItemActive(item) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`}
               />
@@ -86,7 +86,7 @@ export default function Navbar() {
           ))}
           <NeonButton
             to="/resume"
-            className={`px-4 py-2 text-sm ${location.pathname === '/resume' ? 'shadow-neon-ruby' : ''}`}
+            className={`px-4 py-2 text-sm ${location.pathname === '/resume' ? 'shadow-glow' : ''}`}
           >
             Resume
           </NeonButton>
@@ -97,7 +97,7 @@ export default function Navbar() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded px-2.5 py-2 text-xs font-black uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-red-400/10 hover:text-rose-100 hover:shadow-neon-red"
+                className="rounded px-2.5 py-2 text-xs font-black uppercase tracking-[0.14em] text-blue-100/75 transition hover:bg-white/10 hover:text-white"
               >
                 {label}
               </a>
@@ -108,7 +108,7 @@ export default function Navbar() {
 
       {isOpen && (
         <motion.div
-          className="border-t border-red-400/15 bg-zinc-950/95 px-5 pb-5 shadow-glass backdrop-blur-2xl md:hidden"
+          className="border-t border-blue-300/15 bg-slate-950/96 px-5 pb-5 shadow-glass backdrop-blur-2xl md:hidden"
           initial={{ opacity: 0, y: -10, height: 0 }}
           animate={{ opacity: 1, y: 0, height: 'auto' }}
           exit={{ opacity: 0, y: -10, height: 0 }}
@@ -119,10 +119,10 @@ export default function Navbar() {
               <a
                 key={item}
                 href={`/#${item.toLowerCase()}`}
-                className={`rounded border px-4 py-3 text-sm font-semibold transition hover:border-red-400/30 hover:text-rose-100 ${
+                className={`rounded border px-4 py-3 text-sm font-semibold transition hover:border-blue-300/30 hover:text-white ${
                   isNavItemActive(item)
-                    ? 'border-red-400/30 bg-red-400/10 text-rose-100'
-                    : 'border-white/10 bg-white/[0.05] text-zinc-200'
+                    ? 'border-blue-300/30 bg-white/10 text-white'
+                    : 'border-white/10 bg-white/[0.05] text-blue-100'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -143,7 +143,7 @@ export default function Navbar() {
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded border border-white/10 bg-white/[0.05] px-4 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-zinc-300 transition hover:border-red-400/30 hover:text-rose-100"
+                  className="rounded border border-white/10 bg-white/[0.05] px-4 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-blue-100 transition hover:border-blue-300/30 hover:text-white"
                   onClick={() => setIsOpen(false)}
                 >
                   {label}

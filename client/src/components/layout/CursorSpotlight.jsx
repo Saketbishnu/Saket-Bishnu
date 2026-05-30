@@ -34,7 +34,7 @@ export default function CursorSpotlight() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed z-[60] h-[440px] w-[440px] rounded-full bg-[radial-gradient(circle,rgba(248,113,113,0.16),rgba(225,29,72,0.06)_38%,transparent_68%)] blur-xl mix-blend-screen"
+      className="pointer-events-none fixed z-[60] h-[440px] w-[440px] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.12),rgba(147,197,253,0.06)_38%,transparent_68%)] blur-xl mix-blend-multiply"
       style={{ x, y }}
     />
   );

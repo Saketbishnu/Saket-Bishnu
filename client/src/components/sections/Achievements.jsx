@@ -16,12 +16,12 @@ export default function Achievements() {
             key={achievement}
             variants={fadeUp}
             whileHover={{ x: 4 }}
-            className="glass-panel flex gap-4 p-5 transition hover:border-red-400/40"
+            className="glass-panel flex gap-4 p-5 transition hover:border-blue-500/40"
           >
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded border border-red-400/25 bg-red-400/10 font-mono text-sm font-black text-rose-100 shadow-neon-red">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded border border-blue-500/25 bg-blue-500/10 font-mono text-sm font-black text-blue-700 shadow-glow">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <p className="leading-7 text-zinc-300">{achievement}</p>
+            <p className="leading-7 text-slate-700">{achievement}</p>
           </motion.div>
         ))}
       </div>

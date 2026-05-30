@@ -11,12 +11,12 @@ export default function ProjectTechStack({ project }) {
     >
       <div className="grid gap-5 lg:grid-cols-2">
         <motion.div variants={fadeUp} className="cyber-card p-6">
-          <h3 className="text-xl font-black text-white">Tech Stack</h3>
+          <h3 className="text-xl font-black text-slate-900">Tech Stack</h3>
           <div className="mt-5 flex flex-wrap gap-2">
             {project.techStack.map((item) => (
               <span
                 key={item}
-                className="rounded border border-red-400/15 bg-red-400/[0.06] px-3 py-1 text-xs font-semibold text-rose-100"
+                className="rounded border border-blue-500/15 bg-blue-500/[0.06] px-3 py-1 text-xs font-semibold text-blue-700"
               >
                 {item}
               </span>
@@ -25,8 +25,8 @@ export default function ProjectTechStack({ project }) {
         </motion.div>
 
         <motion.div variants={fadeUp} className="cyber-card p-6">
-          <h3 className="text-xl font-black text-white">Challenges Solved</h3>
-          <ul className="mt-4 space-y-3 text-zinc-400">
+          <h3 className="text-xl font-black text-slate-900">Challenges Solved</h3>
+          <ul className="mt-4 space-y-3 text-slate-600">
             {project.challenges.map((challenge) => (
               <li key={challenge} className="leading-7">
                 {challenge}

@@ -10,7 +10,7 @@ import Skills from '../components/sections/Skills.jsx';
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-hidden text-zinc-100">
+    <div className="min-h-screen overflow-hidden text-slate-900">
       <CyberBackground />
       <Navbar />
       <main>
