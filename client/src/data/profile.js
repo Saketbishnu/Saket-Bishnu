@@ -2,9 +2,9 @@ export const profile = {
   name: 'Saket Bishnu',
   roles: ['Software Engineer', 'ML Engineer', 'Full Stack Developer'],
   heroKicker: 'Software Engineer / ML Engineer / Full Stack Developer',
-  heroTitle: 'Futuristic web systems for the modern internet.',
+  heroTitle: 'Building AI products, full-stack applications, and intelligent software experiences.',
   heroDescription:
-    'I am Saket Bishnu, a B.Tech CSE student specializing in Big Data Analytics, building full-stack products, machine learning systems, computer vision workflows, and AI-powered developer experiences.',
+    'Software engineer with a focus on machine learning, computer vision, RAP Pipline, and big data analytics. I design and build products that combine clean interfaces with reliable ML pipelines and production-grade backends.',
   education: {
     degree: 'B.Tech Computer Science and Engineering',
     specialization: 'Big Data Analytics',
@@ -65,18 +65,8 @@ export const profile = {
     'Developed project work across machine learning, computer vision, data science, and full-stack systems'
   ],
   contact: {
-    title: 'Transmit a message to the backend.',
+    title: "Let\u2019s Connect",
     description:
-      'The contact form keeps the MERN flow intact with Axios, Express, MongoDB, validation, and Nodemailer notifications.',
-    details: [
-      ['Email', 'saketbsn@gmail.com'],
-      ['API', 'localhost:5000/api/contact'],
-      ['Location', 'India']
-    ],
-    links: {
-      github: 'https://github.com/Saketbishnu',
-      linkedin: 'https://www.linkedin.com/in/saket-bishnu-00769a269/',
-      email: 'mailto:saketbsn@gmail.com'
-    }
+      "I\u2019m always open to discussing software engineering, AI, machine learning, full-stack development, collaborations, and new opportunities."
   }
 };

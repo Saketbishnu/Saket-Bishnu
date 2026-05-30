@@ -1,10 +1,9 @@
-import { profile } from '../../data/profile.js';
 
 export default function Footer() {
   const links = [
-    ['GitHub', profile.contact.links.github],
-    ['LinkedIn', profile.contact.links.linkedin],
-    ['Email', profile.contact.links.email]
+    ['GitHub', 'https://github.com/Saketbishnu'],
+    ['LinkedIn', 'https://www.linkedin.com/in/saket-bishnu-00769a269/'],
+    ['Email', 'mailto:saketbsn@gmail.com']
   ];
 
   return (

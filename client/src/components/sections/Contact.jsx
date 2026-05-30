@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { sendContactMessage } from '../../api/contactApi.js';
-import { profile } from '../../data/profile.js';
 import GlassCard from '../ui/GlassCard.jsx';
 import NeonButton from '../ui/NeonButton.jsx';
 import Section, { fadeUp } from '../ui/Section.jsx';
@@ -68,123 +67,98 @@ export default function Contact() {
     <Section
       id="contact"
       eyebrow="Contact"
-      title={profile.contact.title}
-      description={profile.contact.description}
+      title="Let's Connect"
+      description="Have a project, collaboration, or opportunity in mind? Send me a message."
     >
-      <div className="grid min-w-0 gap-5 sm:gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <GlassCard as={motion.div} variants={fadeUp} interactive className="min-w-0 p-4 sm:p-6">
-          <h3 className="text-xl font-black text-slate-950">Contact Details</h3>
-          <p className="mt-4 leading-7 text-slate-600">
-            Messages travel from the React interface into the Express API, then
-            into MongoDB and Gmail SMTP.
-          </p>
-          <div className="mt-6 space-y-3 text-sm sm:mt-7">
-            {profile.contact.details.map(([label, value]) => (
-              <div
-                key={label}
-                className="rounded border border-blue-500/15 bg-blue-500/[0.05] p-4"
-              >
-                <p className="break-words font-mono text-xs font-bold uppercase tracking-[0.14em] text-blue-700/70 sm:tracking-[0.2em]">
-                  {label}
-                </p>
-                <p className="mt-1 break-words font-semibold text-slate-700">
-                  {value}
-                </p>
-              </div>
-            ))}
-          </div>
-        </GlassCard>
-
-        <GlassCard
-          as={motion.form}
-          variants={fadeUp}
-          className="min-w-0 p-4 sm:p-6"
-          onSubmit={handleSubmit}
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <motion.label whileFocus={{ y: -2 }} className="block">
-              <span className="text-sm font-bold text-slate-700">Name</span>
-              <input
-                className={inputClass}
-                name="name"
-                placeholder="Your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </motion.label>
-            <motion.label whileFocus={{ y: -2 }} className="block">
-              <span className="text-sm font-bold text-slate-700">Email</span>
-              <input
-                className={`${inputClass} ${
-                  fieldErrors.email
-                    ? 'border-blue-500 focus:border-blue-400 focus:ring-blue-400/10'
-                    : ''
-                }`}
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                aria-invalid={fieldErrors.email ? 'true' : 'false'}
-                aria-describedby={fieldErrors.email ? 'email-error' : undefined}
-              />
-              {fieldErrors.email && (
-                <p id="email-error" className="mt-2 text-sm text-blue-400">
-                  {fieldErrors.email}
-                </p>
-              )}
-            </motion.label>
-          </div>
-
-          <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
-            <span className="text-sm font-bold text-slate-700">Subject</span>
+      <GlassCard
+        as={motion.form}
+        variants={fadeUp}
+        className="mx-auto min-w-0 max-w-2xl p-4 sm:p-6"
+        onSubmit={handleSubmit}
+      >
+        <div className="grid gap-5 sm:grid-cols-2">
+          <motion.label whileFocus={{ y: -2 }} className="block">
+            <span className="text-sm font-bold text-slate-700">Name</span>
             <input
               className={inputClass}
-              name="subject"
-              placeholder="Project, collaboration, or question"
-              value={formData.subject}
+              name="name"
+              placeholder="Your name"
+              value={formData.name}
               onChange={handleChange}
               required
             />
           </motion.label>
-
-          <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
-            <span className="text-sm font-bold text-slate-700">Message</span>
-            <textarea
-              className={`${inputClass} min-h-40 resize-y`}
-              name="message"
-              placeholder="Tell me what you want to build..."
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-          </motion.label>
-
-          <NeonButton
-            className="mt-6 w-full px-5 py-3"
-            type="submit"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Sending signal...' : 'Send Message'}
-          </NeonButton>
-
-          {status.message && (
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`mt-4 rounded border px-4 py-3 text-sm ${
-                status.type === 'success'
-                  ? 'border-blue-200 bg-blue-50 text-blue-700'
-                  : 'border-red-200 bg-red-50 text-red-700'
+          <motion.label whileFocus={{ y: -2 }} className="block">
+            <span className="text-sm font-bold text-slate-700">Email</span>
+            <input
+              className={`${inputClass} ${
+                fieldErrors.email
+                  ? 'border-blue-500 focus:border-blue-400 focus:ring-blue-400/10'
+                  : ''
               }`}
-            >
-              {status.message}
-            </motion.p>
-          )}
-        </GlassCard>
-      </div>
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              aria-invalid={fieldErrors.email ? 'true' : 'false'}
+              aria-describedby={fieldErrors.email ? 'email-error' : undefined}
+            />
+            {fieldErrors.email && (
+              <p id="email-error" className="mt-2 text-sm text-blue-400">
+                {fieldErrors.email}
+              </p>
+            )}
+          </motion.label>
+        </div>
+
+        <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
+          <span className="text-sm font-bold text-slate-700">Subject</span>
+          <input
+            className={inputClass}
+            name="subject"
+            placeholder="Project, collaboration, or question"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+          />
+        </motion.label>
+
+        <motion.label whileFocus={{ y: -2 }} className="mt-5 block">
+          <span className="text-sm font-bold text-slate-700">Message</span>
+          <textarea
+            className={`${inputClass} min-h-40 resize-y`}
+            name="message"
+            placeholder="Tell me what you want to build..."
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+        </motion.label>
+
+        <NeonButton
+          className="mt-6 w-full px-5 py-3"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Sending...' : 'Send Message'}
+        </NeonButton>
+
+        {status.message && (
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`mt-4 rounded border px-4 py-3 text-sm ${
+              status.type === 'success'
+                ? 'border-blue-200 bg-blue-50 text-blue-700'
+                : 'border-red-200 bg-red-50 text-red-700'
+            }`}
+          >
+            {status.message}
+          </motion.p>
+        )}
+      </GlassCard>
     </Section>
   );
 }

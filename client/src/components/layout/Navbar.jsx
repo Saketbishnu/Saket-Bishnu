@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { profile } from '../../data/profile.js';
 import NeonButton from '../ui/NeonButton.jsx';
 
 const navItems = ['About', 'Skills', 'Projects', 'Achievements', 'Contact'];
 const socialLinks = [
-  ['GitHub', profile.contact.links.github],
-  ['LinkedIn', profile.contact.links.linkedin]
+  ['GitHub', 'https://github.com/Saketbishnu'],
+  ['LinkedIn', 'https://www.linkedin.com/in/saket-bishnu-00769a269/']
 ];
 
 export default function Navbar() {
