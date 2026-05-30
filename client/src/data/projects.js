@@ -101,7 +101,7 @@ export const projects = [
       'Structuring services and contact information clearly'
     ],
     images: [goodLifeClinicImage, goodLifeClinicImage, goodLifeClinicImage],
-    githubUrl: '',
+    githubUrl: 'https://github.com/Saketbishnu/Good-Life-Clinic.git',
     liveUrl: ''
   },
   {
