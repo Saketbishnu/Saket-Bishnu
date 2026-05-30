@@ -114,10 +114,10 @@ function ProfileCard3D() {
               {profile.name}
             </h3>
             <p className="mt-1 text-sm font-semibold text-blue-600/80 tracking-wide">
-              Software Engineer · ML Engineer
+              Software Engineer · AI-ML Engineer
             </p>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              {['Full Stack', 'Machine Learning', 'Computer Vision'].map(
+              {['', ''].map(
                 (tag) => (
                   <span
                     key={tag}
