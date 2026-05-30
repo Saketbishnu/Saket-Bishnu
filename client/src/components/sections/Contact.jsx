@@ -71,20 +71,20 @@ export default function Contact() {
       title={profile.contact.title}
       description={profile.contact.description}
     >
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <GlassCard as={motion.div} variants={fadeUp} interactive className="p-6">
+      <div className="grid min-w-0 gap-5 sm:gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <GlassCard as={motion.div} variants={fadeUp} interactive className="min-w-0 p-4 sm:p-6">
           <h3 className="text-xl font-black text-slate-950">Contact Details</h3>
           <p className="mt-4 leading-7 text-slate-600">
             Messages travel from the React interface into the Express API, then
             into MongoDB and Gmail SMTP.
           </p>
-          <div className="mt-7 space-y-3 text-sm">
+          <div className="mt-6 space-y-3 text-sm sm:mt-7">
             {profile.contact.details.map(([label, value]) => (
               <div
                 key={label}
                 className="rounded border border-blue-500/15 bg-blue-500/[0.05] p-4"
               >
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-700/70">
+                <p className="break-words font-mono text-xs font-bold uppercase tracking-[0.14em] text-blue-700/70 sm:tracking-[0.2em]">
                   {label}
                 </p>
                 <p className="mt-1 break-words font-semibold text-slate-700">
@@ -98,7 +98,7 @@ export default function Contact() {
         <GlassCard
           as={motion.form}
           variants={fadeUp}
-          className="p-5 sm:p-6"
+          className="min-w-0 p-4 sm:p-6"
           onSubmit={handleSubmit}
         >
           <div className="grid gap-5 sm:grid-cols-2">

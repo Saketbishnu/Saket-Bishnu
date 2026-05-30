@@ -11,23 +11,23 @@ export default function Skills() {
       title="Engineering toolkit for product builds."
       description="A compact stack for building polished interfaces, useful APIs, persistent data flows, and maintainable developer workflows."
     >
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid min-w-0 gap-4 sm:gap-5 lg:grid-cols-2">
         {skillGroups.map((group) => (
           <GlassCard
             key={group.category}
             as={motion.div}
             variants={fadeUp}
             interactive
-            className="p-5 sm:p-6"
+            className="min-w-0 p-4 sm:p-6"
           >
-            <div className="flex items-center justify-between gap-4">
-              <h3 className="text-xl font-black text-slate-900">{group.category}</h3>
+            <div className="flex min-w-0 flex-wrap items-center justify-between gap-3 sm:gap-4">
+              <h3 className="break-words text-lg font-black text-slate-900 sm:text-xl">{group.category}</h3>
               <span className="rounded-full border border-blue-500/20 bg-blue-500/[0.06] px-3 py-1 font-mono text-xs font-black text-blue-700">
                 {String(group.skills.length).padStart(2, '0')}
               </span>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="mt-5 grid min-w-0 gap-3 sm:grid-cols-2">
               {group.skills.map((skill) => (
                 <motion.div
                   key={skill.name}

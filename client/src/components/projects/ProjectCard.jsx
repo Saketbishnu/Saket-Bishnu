@@ -12,7 +12,7 @@ export default function ProjectCard({ project, index }) {
     <GlassCard
       as={motion.article}
       variants={fadeUp}
-      whileHover={{ y: -10, scale: 1.015, rotateX: 2 }}
+      whileHover={{ y: -6, scale: 1.01 }}
       interactive
       className="group relative w-full min-w-0 overflow-hidden p-0"
     >
