@@ -117,10 +117,10 @@ function ProfileCard3D() {
               Software Engineer · AI-ML Engineer
             </p>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              {['', ''].map(
-                (tag) => (
+              {profile.roles.slice(0, 2).map(
+                (tag, index) => (
                   <span
-                    key={tag}
+                    key={`${tag}-${index}`}
                     className="rounded-full border border-blue-200/60 bg-blue-50/70 px-2.5 py-0.5 text-xs font-bold text-blue-700/80"
                   >
                     {tag}
@@ -285,9 +285,9 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-8 grid max-w-2xl grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:mt-10 sm:grid-cols-3"
           >
-            {profile.stats.map(([value, label]) => (
+            {profile.stats.map(([value, label], index) => (
               <GlassCard
-                key={label}
+                key={`${label}-${index}`}
                 as={motion.div}
                 whileHover={{ y: -5 }}
                 className="p-4 text-center"

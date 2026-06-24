@@ -47,9 +47,9 @@ export default function About() {
         </GlassCard>
 
         <div className="grid gap-5">
-          {profile.about.cards.map((card) => (
+          {profile.about.cards.map((card, index) => (
             <GlassCard
-              key={card.title}
+              key={`${card.title}-${index}`}
               as={motion.div}
               variants={fadeUp}
               interactive
@@ -63,9 +63,9 @@ export default function About() {
       </div>
 
       <motion.div variants={fadeUp} className="mt-5 flex flex-wrap gap-2">
-        {profile.interests.map((interest) => (
+        {profile.interests.map((interest, index) => (
           <span
-            key={interest}
+            key={`${interest}-${index}`}
             className="max-w-full break-words rounded border border-blue-500/20 bg-blue-500/[0.06] px-3 py-1 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-blue-700 sm:tracking-[0.14em]"
           >
             {interest}

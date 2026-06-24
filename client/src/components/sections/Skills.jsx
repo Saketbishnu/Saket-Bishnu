@@ -12,9 +12,9 @@ export default function Skills() {
       description="A compact stack for building polished interfaces, useful APIs, persistent data flows, and maintainable developer workflows."
     >
       <div className="grid min-w-0 gap-4 sm:gap-5 lg:grid-cols-2">
-        {skillGroups.map((group) => (
+        {skillGroups.map((group, groupIndex) => (
           <GlassCard
-            key={group.category}
+            key={`${group.category}-${groupIndex}`}
             as={motion.div}
             variants={fadeUp}
             interactive
@@ -28,9 +28,9 @@ export default function Skills() {
             </div>
 
             <div className="mt-5 grid min-w-0 gap-3 sm:grid-cols-2">
-              {group.skills.map((skill) => (
+              {group.skills.map((skill, skillIndex) => (
                 <motion.div
-                  key={skill.name}
+                  key={`${group.category}-${skill.name}-${skillIndex}`}
                   whileHover={{ y: -4, scale: 1.015 }}
                   className="group relative overflow-hidden rounded border border-slate-200 bg-white p-4 shadow-sm transition hover:border-blue-400 hover:bg-blue-50/45"
                 >

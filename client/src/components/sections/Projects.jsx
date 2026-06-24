@@ -7,8 +7,8 @@ export default function Projects() {
     <Section
       id="projects"
       eyebrow="Projects"
-      title="Premium cards for full-stack proof."
-      description="Each project card frames the build like a system module: visual layer, integration layer, and backend workflow."
+      title=""
+      description=""
     >
       <div className="relative min-w-0">
         <div className="pointer-events-none absolute inset-x-4 top-6 -z-10 h-32 rounded-full bg-blue-500/10 blur-3xl sm:inset-x-8 sm:top-10 sm:h-48" />

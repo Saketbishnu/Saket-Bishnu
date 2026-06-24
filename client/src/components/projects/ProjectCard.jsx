@@ -58,9 +58,9 @@ export default function ProjectCard({ project, index }) {
           {project.shortDescription}
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
-          {project.techStack.slice(0, 3).map((tag) => (
+          {project.techStack.slice(0, 3).map((tag, tagIndex) => (
             <motion.span
-              key={tag}
+              key={`${tag}-${tagIndex}`}
               whileHover={{ y: -2 }}
               className="max-w-full break-words rounded border border-blue-500/15 bg-blue-500/[0.06] px-3 py-1 text-xs font-semibold leading-5 text-blue-700 transition group-hover:border-blue-500/35 group-hover:text-blue-700"
             >

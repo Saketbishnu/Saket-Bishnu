@@ -18,8 +18,8 @@ export default function ProjectWorkflow({ project }) {
           <motion.div variants={fadeUp} className="cyber-card p-6">
             <h3 className="text-xl font-black text-slate-900">Features</h3>
             <ul className="mt-4 space-y-3 text-slate-600">
-              {project.features.map((feature) => (
-                <li key={feature} className="leading-7">
+              {project.features.map((feature, index) => (
+                <li key={`${feature}-${index}`} className="leading-7">
                   {feature}
                 </li>
               ))}
@@ -37,7 +37,7 @@ export default function ProjectWorkflow({ project }) {
         <div className="grid gap-4 md:grid-cols-2">
           {project.workflow.map((step, index) => (
             <motion.div
-              key={step}
+              key={`${step}-${index}`}
               variants={fadeUp}
               className="glass-panel flex gap-4 p-5"
             >

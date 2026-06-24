@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Saket Bishnu',
-  roles: ['Software Engineer', 'AI-ML Engineer', ''],
+  roles: ['Software Engineer', 'AI-ML Engineer'],
   heroKicker: 'Software Engineer / AI-ML Engineer  ',
   heroTitle: 'Building AI products, full-stack applications, and intelligent software experiences.',
   heroDescription:
@@ -19,7 +19,7 @@ export const profile = {
     'AI Technologies'
   ],
   currentFocus:
-    'Building applied AI and full-stack systems that combine clean product interfaces with reliable data and ML workflows.',
+    '',
   careerObjective:
     'To contribute as a software and machine learning engineer by building scalable products, intelligent systems, and useful AI-driven solutions.',
   stats: [
@@ -40,9 +40,9 @@ export const profile = {
   },
   about: {
     eyebrow: 'About',
-    title: 'A developer profile tuned for precise execution.',
+    title: ' ',
     description:
-      'The portfolio is shaped around full-stack delivery, applied machine learning, computer vision, validated data, and interaction details that feel alive.',
+      '',
     cards: [
       {
         title: 'Education',
@@ -54,7 +54,7 @@ export const profile = {
       },
       {
         title: 'Career Objective',
-        text: 'Build scalable software and intelligent AI-driven products that solve real problems with clean engineering.'
+        text: 'To contribute as a software and machine learning engineer by building scalable products, intelligent systems, and useful AI-driven solutions.'
       }
     ]
   },

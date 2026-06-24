@@ -13,7 +13,7 @@ export default function Achievements() {
       <div className="grid min-w-0 gap-4 md:grid-cols-2">
         {profile.achievements.map((achievement, index) => (
           <motion.div
-            key={achievement}
+            key={`${achievement}-${index}`}
             variants={fadeUp}
             whileHover={{ x: 4 }}
             className="glass-panel flex min-w-0 gap-3 p-4 transition hover:border-blue-500/40 sm:gap-4 sm:p-5"
