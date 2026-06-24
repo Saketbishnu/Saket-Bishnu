@@ -7,8 +7,8 @@ export default function Achievements() {
     <Section
       id="achievements"
       eyebrow="Achievements"
-      title="Build signals from the stack."
-      description="A concise trace of the implementation strength behind this MERN portfolio."
+      title="Turning Ideas Into Results."
+      description="A showcase of technical accomplishments, project milestones, internships, and achievements that reflect my growth as a software engineer."
     >
       <div className="grid min-w-0 gap-4 md:grid-cols-2">
         {profile.achievements.map((achievement, index) => (

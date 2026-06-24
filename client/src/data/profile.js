@@ -58,12 +58,17 @@ export const profile = {
       }
     ]
   },
-  achievements: [
-    'Built a clean MERN architecture with separate client and server layers',
-    'Connected a production-style contact form to MongoDB and Gmail SMTP',
-    'Added backend email validation before persistence or notifications',
-    'Developed project work across machine learning, computer vision, data science, and full-stack systems'
-  ],
+   achievements: [
+'Built scalable full-stack applications using MERN, integrating secure authentication, APIs, and cloud databases',
+'Developed AI/ML solutions leveraging machine learning, deep learning, and computer vision techniques',
+'Implemented real-world analytics systems for prediction, automation, and intelligent decision-making',
+'Created a Football Analysis System using YOLO, OpenCV, and tracking algorithms for sports performance insights',
+'Built a Retrieval-Augmented Generation (RAG) assistant for interactive querying of educational video content',
+'Completed professional internship experience in automation testing with Selenium and Robot Framework',
+'Recognized with 1st Prize in the Semiconductor Expo for technical innovation and project execution',
+'Applied data science, software engineering, and AI skills across multiple academic and personal projects'
+],
+
   contact: {
     title: "Let\u2019s Connect",
     description:

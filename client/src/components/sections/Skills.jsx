@@ -8,8 +8,8 @@ export default function Skills() {
     <Section
       id="skills"
       eyebrow="Skills"
-      title="Engineering toolkit for product builds."
-      description="A compact stack for building polished interfaces, useful APIs, persistent data flows, and maintainable developer workflows."
+      title="Technical Expertise"
+      description="The tools, frameworks, and technologies I use to build scalable applications, intelligent systems, and modern web experiences.."
     >
       <div className="grid min-w-0 gap-4 sm:gap-5 lg:grid-cols-2">
         {skillGroups.map((group, groupIndex) => (
