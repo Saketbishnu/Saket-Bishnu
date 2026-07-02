@@ -47,7 +47,7 @@ export const createContactMessage = async (req, res, next) => {
     });
 
     const textContent = [
-      'New contact form submission',
+      '💼 New Portfolio Inquiry',
       '',
       `Name: ${name}`,
       `Email: ${normalizedEmail}`,
