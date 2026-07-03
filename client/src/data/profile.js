@@ -1,10 +1,10 @@
 export const profile = {
   name: 'Saket Bishnu',
   roles: ['Software Developer', 'AI-ML Engineer'],
-  heroKicker: 'Software Developer / AI-ML Engineer  ',
+  heroKicker: 'Software Developer',
   heroTitle: 'Building AI products, full-stack applications, and intelligent software experiences.',
   heroDescription:
-    'Software Developer with a focus on machine learning, computer vision, RAG Pipline, and big data analytics. I design and build products that combine clean interfaces with reliable ML pipelines and production-grade backends.',
+   'Passionate about transforming ideas into impactful software solutions. I design and build products that combine clean interfaces with reliable ML pipelines and production-grade backends, delivering scalable, user-focused applications powered by modern technologies.',
   education: {
     degree: 'B.Tech Computer Science and Engineering',
     specialization: 'Big Data Analytics',
@@ -12,11 +12,14 @@ export const profile = {
     cgpa: '8.2'
   },
   interests: [
+    'Artificial Intelligence',
     'Machine Learning',
     'Computer Vision',
     'Data Science',
     'Full Stack Development',
-    'AI Technologies'
+    'Big Data Analytics',
+    'Cloud Computing',
+    'Software Engineering'
   ],
   currentFocus:
     '',
@@ -40,23 +43,42 @@ export const profile = {
   },
   about: {
     eyebrow: 'About',
-    title: ' ',
-    description:
-      '',
-    cards: [
+    title: 'ABOUT ME',
+    description: '',
+    introduction: 'Driven by curiosity and a passion for innovation, I enjoy transforming complex ideas into practical software solutions. I graduated with a Bachelor of Technology in Computer Science Engineering, specializing in Big Data Analytics, from SRM Institute of Science and Technology Kattankulathur, with a CGPA of 8.2. My interests lie in Software Engineering, Artificial Intelligence, Machine Learning, Computer Vision, Data Science, and Full-Stack Development, where I continuously explore new technologies and apply them to build scalable, efficient, and user-centric applications. I believe that continuous learning, strong problem-solving skills, and writing clean, maintainable code are essential to creating software that delivers lasting value.',
+    academicJourney: [
       {
-        title: 'Education',
-        text: 'B.Tech CSE with Big Data Analytics at SRM Institute of Science and Technology, with a CGPA of 8.2.'
+        level: 'Bachelor of Technology',
+        field: 'Computer Science Engineering (Big Data Analytics)',
+        institution: 'SRM Institute of Science and Technology',
+        location: 'Kattankulathur',
+        score: '8.2 CGPA'
       },
       {
-        title: 'Current Focus',
-        text: 'Applied AI, machine learning, computer vision, data science, and full-stack systems with production-style UX.'
+        level: '12th Standard',
+        field: 'Higher Secondary Schooling',
+        institution: "St. Karen's Secondary School",
+        location: '',
+        score: '81.6%'
       },
       {
-        title: 'Career Objective',
-        text: 'To contribute as a software and machine learning engineer by building scalable products, intelligent systems, and useful AI-driven solutions.'
+        level: '10th Standard',
+        field: 'Secondary Schooling',
+        institution: 'Sun Rays High School',
+        location: '',
+        score: '90.2%'
       }
-    ]
+    ],
+    interests: [
+      'Artificial Intelligence',
+      'Machine Learning',
+      'Computer Vision',
+      'Data Science',
+      'Full Stack Development',
+      'Big Data Analytics',
+      'Software Engineering'
+    ],
+    careerGoal: 'I am seeking opportunities as a Software Engineer or AI/ML Engineer where I can contribute to meaningful products, solve real-world technical challenges, collaborate with experienced teams, and continuously grow my expertise in software engineering, artificial intelligence, machine learning, and scalable system development.'
   },
    achievements: [
 'Built scalable full-stack applications using MERN, integrating secure authentication, APIs, and cloud databases',

@@ -11,67 +11,106 @@ export default function About() {
       title={profile.about.title}
       description={profile.about.description}
     >
-      <div className="grid min-w-0 gap-4 sm:gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-        <GlassCard as={motion.div} variants={fadeUp} className="min-w-0 p-4 sm:p-8">
-          <p className="break-words text-xs font-black uppercase tracking-[0.2em] text-blue-700/80 sm:text-sm sm:tracking-[0.28em]">
-            {profile.name}
-          </p>
-          <h3 className="mt-4 break-words text-xl font-black text-slate-900 sm:text-3xl">
-            {profile.roles.join(' / ')}
-          </h3>
-          <p className="mt-5 leading-8 text-slate-700">{profile.currentFocus}</p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <div className="rounded border border-blue-500/15 bg-blue-500/[0.05] p-4">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700/70">
-                Education
-              </p>
-              <p className="mt-2 font-semibold text-slate-900">
-                {profile.education.degree}
-              </p>
-              <p className="mt-1 text-sm text-slate-600">
-                {profile.education.institute}
-              </p>
+      <div className="grid min-w-0 gap-6 lg:grid-cols-2">
+        {/* Left Column: Professional Introduction */}
+        <GlassCard as={motion.div} variants={fadeUp} className="min-w-0 p-5 sm:p-8 flex flex-col justify-between h-full">
+          <div>
+            <h3 className="text-xl font-black text-slate-900 sm:text-2xl mb-4">
+        
+            </h3>
+            <div className="space-y-5 text-slate-700 text-sm sm:text-base leading-8">
+  {profile.about.introduction.split('\n\n').map((para, i) => (
+    <p
+      key={i}
+      className="text-justify font-medium"
+    >
+      {para}
+    </p>
+  ))}
+</div>
+          </div>
+          
+          <div className="mt-8 pt-6 border-t border-slate-200/60 grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span className="block text-xs font-bold uppercase tracking-wider text-blue-700/80">Institution</span>
+              <span className="font-semibold text-slate-900">SRM IST, Kattankulathur</span>
             </div>
-            <div className="rounded border border-blue-400/15 bg-blue-400/[0.05] p-4">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700/70">
-                CGPA
-              </p>
-              <p className="mt-2 text-3xl font-black text-slate-900">
-                {profile.education.cgpa}
-              </p>
-              <p className="mt-1 text-sm text-slate-600">
-                {profile.education.specialization}
-              </p>
+            <div>
+              <span className="block text-xs font-bold uppercase tracking-wider text-blue-700/80">Degree</span>
+              <span className="font-semibold text-slate-900">B.Tech CSE</span>
+            </div>
+            <div>
+              <span className="block text-xs font-bold uppercase tracking-wider text-blue-700/80">Specialization</span>
+              <span className="font-semibold text-slate-900">Big Data Analytics</span>
+            </div>
+            <div>
+              <span className="block text-xs font-bold uppercase tracking-wider text-blue-700/80">Academics</span>
+              <span className="font-semibold text-slate-900">8.2 CGPA</span>
             </div>
           </div>
         </GlassCard>
 
-        <div className="grid gap-5">
-          {profile.about.cards.map((card, index) => (
+        {/* Right Column: Academic Journey */}
+        <div className="flex flex-col gap-4 justify-between h-full">
+          {profile.about.academicJourney.map((edu, index) => (
             <GlassCard
-              key={`${card.title}-${index}`}
+              key={`${edu.level}-${index}`}
               as={motion.div}
               variants={fadeUp}
               interactive
-              className="min-w-0 p-4 sm:p-6"
+              className="p-5 flex flex-col justify-between flex-1"
             >
-              <h3 className="text-lg font-black text-slate-900">{card.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{card.text}</p>
+              <div className="flex justify-between items-start gap-4">
+                <div className="min-w-0">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700/80">
+                    {index === 0 ? 'GRADUATE' : index === 1 ? 'Higher Secondary' : 'Secondary'}
+                  </span>
+                  <h4 className="text-base font-black text-slate-900 mt-1 truncate">
+                    {edu.level}
+                  </h4>
+                  <p className="text-sm text-slate-600 mt-0.5 break-words">
+                    {edu.field}
+                  </p>
+                </div>
+                <span className="shrink-0 rounded bg-blue-100 px-2.5 py-1 text-xs font-black text-blue-700 shadow-sm">
+                  {edu.score}
+                </span>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-200/50 text-xs text-slate-500 truncate">
+                {edu.institution}{edu.location ? `, ${edu.location}` : ''}
+              </div>
             </GlassCard>
           ))}
         </div>
       </div>
 
-      <motion.div variants={fadeUp} className="mt-5 flex flex-wrap gap-2">
-        {profile.interests.map((interest, index) => (
-          <span
-            key={`${interest}-${index}`}
-            className="max-w-full break-words rounded border border-blue-500/20 bg-blue-500/[0.06] px-3 py-1 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-blue-700 sm:tracking-[0.14em]"
-          >
-            {interest}
-          </span>
-        ))}
+      {/* Professional Interests */}
+      <motion.div variants={fadeUp} className="mt-8 sm:mt-10">
+        <h3 className="text-lg font-black text-slate-950 mb-4 tracking-wide uppercase text-xs text-blue-700/80">
+          Professional Interests
+        </h3>
+        <div className="flex flex-wrap gap-2 sm:gap-3">
+          {profile.about.interests.map((interest, index) => (
+            <motion.div
+              key={`${interest}-${index}`}
+              whileHover={{ y: -2, scale: 1.02 }}
+              className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-slate-700 shadow-sm transition hover:border-blue-500/30 hover:text-blue-700"
+            >
+              {interest}
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
+
+      {/* Career Goal */}
+      <GlassCard as={motion.div} variants={fadeUp} className="mt-8 sm:mt-10 p-6 sm:p-8">
+        <h3 className="text-lg font-black text-slate-950 mb-4 tracking-wide uppercase text-xs text-blue-700/80">
+          Career Goal
+        </h3>
+        <p className="leading-8 text-slate-700 text-sm sm:text-base">
+          {profile.about.careerGoal}
+        </p>
+      </GlassCard>
     </Section>
   );
 }
