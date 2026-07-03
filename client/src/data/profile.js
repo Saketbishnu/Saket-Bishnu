@@ -1,10 +1,10 @@
 export const profile = {
   name: 'Saket Bishnu',
-  roles: ['Software Engineer', 'AI-ML Engineer'],
-  heroKicker: 'Software Engineer / AI-ML Engineer  ',
+  roles: ['Software Developer', 'AI-ML Engineer'],
+  heroKicker: 'Software Developer / AI-ML Engineer  ',
   heroTitle: 'Building AI products, full-stack applications, and intelligent software experiences.',
   heroDescription:
-    'Software engineer with a focus on machine learning, computer vision, RAG Pipline, and big data analytics. I design and build products that combine clean interfaces with reliable ML pipelines and production-grade backends.',
+    'Software Developer with a focus on machine learning, computer vision, RAG Pipline, and big data analytics. I design and build products that combine clean interfaces with reliable ML pipelines and production-grade backends.',
   education: {
     degree: 'B.Tech Computer Science and Engineering',
     specialization: 'Big Data Analytics',

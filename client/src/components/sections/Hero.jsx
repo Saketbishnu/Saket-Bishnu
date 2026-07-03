@@ -95,7 +95,7 @@ function ProfileCard3D() {
             >
               <img
                 src="/saket_profile.jpg"
-                alt="Saket Bishnu — Software Engineer"
+                alt="Saket Bishnu — Software Deleveloper"
                 className="block h-auto w-full rounded-xl object-cover"
                 loading="eager"
                 draggable="false"
@@ -114,7 +114,7 @@ function ProfileCard3D() {
               {profile.name}
             </h3>
             <p className="mt-1 text-sm font-semibold text-blue-600/80 tracking-wide">
-              Software Engineer · AI-ML Engineer
+              
             </p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {profile.roles.slice(0, 2).map(
