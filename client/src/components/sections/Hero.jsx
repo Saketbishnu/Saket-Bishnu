@@ -252,11 +252,11 @@ export default function Hero() {
           <Hero3DTitle />
 
           <motion.p
-            variants={fadeUp}
-            className="mt-5 max-w-2xl text-base leading-7 text-slate-700 sm:mt-6 sm:text-lg sm:leading-8"
-          >
-            {profile.heroDescription}
-          </motion.p>
+  variants={fadeUp}
+  className="mt-5 max-w-2xl text-justify text-base font-medium leading-8 text-slate-700 sm:mt-6 sm:text-lg sm:leading-9"
+>
+  {profile.heroDescription}
+</motion.p>
 
           <motion.div
             variants={fadeUp}

@@ -2,9 +2,8 @@ export const skillGroups = [
   {
     category: 'Languages',
     skills: [
-      { name: 'JavaScript', level: 'Core Logic', glow: 'from-white to-blue-500' },
       { name: 'Python', level: 'AI / Data', glow: 'from-blue-500 to-blue-600' },
-      { name: 'Java', level: 'Programming', glow: 'from-blue-500 to-blue-500' },
+      { name: 'C++', level: 'Programming', glow: 'from-blue-500 to-blue-500' },
       { name: 'SQL', level: 'Data Queries', glow: 'from-blue-400 to-zinc-200' }
     ]
   },
@@ -31,7 +30,7 @@ export const skillGroups = [
     skills: [
       { name: 'Machine Learning', level: 'Modeling', glow: 'from-blue-500 to-blue-600' },
       { name: 'Computer Vision', level: 'Vision AI', glow: 'from-blue-500 to-blue-500' },
-      { name: 'YOLO', level: 'Object Tracking', glow: 'from-blue-400 to-zinc-200' },
+      { name: 'Data Analytics', level: 'Analysis', glow: 'from-blue-400 to-zinc-200' },
       { name: 'Data Science', level: 'Analytics', glow: 'from-white to-blue-500' }
     ]
   },
