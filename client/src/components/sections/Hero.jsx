@@ -117,7 +117,7 @@ function ProfileCard3D() {
               
             </p>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              {profile.roles.slice(0, 2).map(
+              {profile.roles.slice(0, 3).map(
                 (tag, index) => (
                   <span
                     key={`${tag}-${index}`}

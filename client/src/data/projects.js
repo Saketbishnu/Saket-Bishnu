@@ -37,8 +37,8 @@ export const projects = [
       'Presenting model output in an interpretable format'
     ],
     images: [liversegnetImage, liversegnetImage, liversegnetImage],
-    githubUrl: '',
-    liveUrl: ''
+    githubUrl: 'https://github.com/akashrajput005/liversegnet',
+    liveUrl: 'https://liversegnet-nq3ncgte2bappazv7kbu7e.streamlit.app/'
   },
   {
     slug: 'football-tracking-using-yolo',
@@ -102,7 +102,7 @@ export const projects = [
     ],
     images: [goodLifeClinicImage, goodLifeClinicImage, goodLifeClinicImage],
     githubUrl: 'https://github.com/Saketbishnu/Good-Life-Clinic.git',
-    liveUrl: ''
+    liveUrl: 'https://good-life-clinic.vercel.app/'
   },
   {
     slug: 'medswift',
@@ -133,7 +133,7 @@ export const projects = [
       'Balancing usability with professional presentation'
     ],
     images: [medswiftImage, medswiftImage, medswiftImage],
-    githubUrl: '',
+    githubUrl: 'https://github.com/Saketbishnu/MedSwift.git',
     liveUrl: ''
   },
   {
@@ -165,8 +165,8 @@ export const projects = [
       'Improving model reliability across conditions'
     ],
     images: [cropYieldImage, cropYieldImage, cropYieldImage],
-    githubUrl: '',
-    liveUrl: ''
+    githubUrl: 'https://github.com/Saketbishnu/krishidost-crop-yield',
+    liveUrl: 'https://krishidost.vercel.app/'
   },
   {
     slug: 'credit-card-fraud-detection',
@@ -229,7 +229,7 @@ export const projects = [
       'Designing a usable AI query workflow'
     ],
     images: [genaiVideoImage, genaiVideoImage, genaiVideoImage],
-    githubUrl: '',
+    githubUrl: 'https://github.com/Saketbishnu/RAG-BASED-AI',
     liveUrl: ''
   },
   {
@@ -261,7 +261,7 @@ export const projects = [
       'Designing scalable monitoring workflows'
     ],
     images: [vendorMonitoringImage, vendorMonitoringImage, vendorMonitoringImage],
-    githubUrl: '',
+    githubUrl: 'https://github.com/Saketbishnu/vendor-performance-dashboard',
     liveUrl: ''
   }
 ];

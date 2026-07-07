@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Saket Bishnu',
-  roles: ['Software Developer', 'AI-ML Engineer'],
+  roles: ['Software Developer', 'Full-Stack Developer', 'AI-ML Engineer'],
   heroKicker: 'Software Developer',
   heroTitle: 'Building AI products, full-stack applications, and intelligent software experiences.',
   heroDescription:
