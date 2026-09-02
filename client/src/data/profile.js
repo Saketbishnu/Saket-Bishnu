@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Saket Bishnu',
-  roles: ['Software Developer', 'Full-Stack Developer', 'AI-ML Engineer'],
+  roles: ['Software Developer',  'AI-ML Engineer'],
   heroKicker: 'Software Developer',
   heroTitle: 'Building AI products, full-stack applications, and intelligent software experiences.',
   heroDescription:
@@ -11,36 +11,15 @@ export const profile = {
     institute: 'SRM Institute of Science and Technology',
     cgpa: '8.2'
   },
-  interests: [
-    'Artificial Intelligence',
-    'Machine Learning',
-    'Computer Vision',
-    'Data Science',
-    'Full Stack Development',
-    'Big Data Analytics',
-    'Cloud Computing',
-    'Software Engineering'
-  ],
   currentFocus:
     '',
   careerObjective:
     'To contribute as a software and machine learning engineer by building scalable products, intelligent systems, and useful AI-driven solutions.',
   stats: [
-    ['08+', 'Featured Projects'],
-    ['8.2', 'CGPA'],
+    ['12+', 'Featured Projects'],
+    ['8.1', 'CGPA'],
     ['AI/ML', 'Focus Area']
   ],
-  terminal: {
-    filename: 'portfolio.core',
-    code: `const saket = {
-  role: 'Software / ML Engineer',
-  degree: 'B.Tech CSE - Big Data',
-  cgpa: 8.2,
-  interests: ['ML', 'CV', 'Full Stack'],
-  status: 'shipping'
-};`,
-    highlights: ['AI Systems', 'Full Stack', 'Computer Vision', 'Data Science']
-  },
   about: {
     eyebrow: 'About',
     title: 'ABOUT ME',
@@ -52,7 +31,7 @@ export const profile = {
         field: 'Computer Science Engineering (Big Data Analytics)',
         institution: 'SRM Institute of Science and Technology',
         location: 'Kattankulathur',
-        score: '8.2 CGPA'
+        score: '8.1 CGPA'
       },
       {
         level: '12th Standard',
