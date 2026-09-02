@@ -8,6 +8,7 @@ import {
   deleteProjectImage,
   uploadProjectImage
 } from '../controllers/projectController.js';
+import { projectImageUpload } from '../middleware/upload.js';
 
 const router = express.Router();
 
@@ -30,10 +31,11 @@ const adminAuth = (req, res, next) => {
   next();
 };
 
-router.post('/', adminAuth, createProject);
-router.put('/:id', adminAuth, updateProject);
+router.post('/', adminAuth, projectImageUpload.array('images', 10), createProject);
+router.put('/:id', adminAuth, projectImageUpload.array('images', 10), updateProject);
 router.delete('/:id', adminAuth, deleteProject);
-router.post('/:id/images', adminAuth, uploadProjectImage);
-router.delete('/:id/images/:publicId', adminAuth, deleteProjectImage);
+router.post('/:id/images', adminAuth, projectImageUpload.array('images', 10), uploadProjectImage);
+router.delete('/:id/images', adminAuth, deleteProjectImage);
+router.delete('/:id/images/:publicId(*)', adminAuth, deleteProjectImage);
 
 export default router;

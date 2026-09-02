@@ -1,5 +1,66 @@
 import Project from '../models/Project.js';
-import { deleteImageFromCloudinary, uploadImageToCloudinary } from '../middleware/upload.js';
+import { deleteImageFromCloudinary, uploadFilesToCloudinary } from '../middleware/upload.js';
+
+const parseArrayField = (value) => {
+  if (Array.isArray(value)) {
+    return value.map((item) => `${item}`.trim()).filter(Boolean);
+  }
+
+  if (typeof value !== 'string') {
+    return [];
+  }
+
+  const trimmedValue = value.trim();
+
+  if (!trimmedValue) {
+    return [];
+  }
+
+  try {
+    const parsedValue = JSON.parse(trimmedValue);
+    if (Array.isArray(parsedValue)) {
+      return parsedValue.map((item) => `${item}`.trim()).filter(Boolean);
+    }
+  } catch {
+    return trimmedValue
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+};
+
+const parseBooleanField = (value) => {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+
+  if (typeof value === 'string') {
+    return value === 'true';
+  }
+
+  return false;
+};
+
+const buildProjectPayload = (body) => ({
+  title: body.title?.trim(),
+  slug: body.slug?.trim() || undefined,
+  shortDescription: body.shortDescription?.trim(),
+  description: body.description?.trim(),
+  category: body.category?.trim(),
+  technologies: parseArrayField(body.technologies),
+  status: body.status?.trim() || 'Completed',
+  featured: parseBooleanField(body.featured),
+  liveUrl: body.liveUrl?.trim() || '',
+  githubUrl: body.githubUrl?.trim() || '',
+  problemStatement: body.problemStatement?.trim() || '',
+  features: parseArrayField(body.features),
+  challenges: parseArrayField(body.challenges),
+  workflow: parseArrayField(body.workflow)
+});
+
+const hasOwnField = (body, field) => Object.prototype.hasOwnProperty.call(body, field);
 
 export const getProjects = async (_req, res, next) => {
   try {
@@ -40,10 +101,11 @@ export const getProjectBySlug = async (req, res, next) => {
 
 export const createProject = async (req, res, next) => {
   try {
-    const { title, slug, shortDescription, description, category, technologies, status, featured, liveUrl, githubUrl, images, problemStatement, features, challenges, workflow } = req.body;
+    const projectData = buildProjectPayload(req.body);
+    const { title, slug, shortDescription, description, category, technologies } = projectData;
 
     // Validate required fields
-    if (!title || !shortDescription || !description || !category || !technologies || !Array.isArray(technologies) || technologies.length === 0) {
+    if (!title || !shortDescription || !description || !category || technologies.length === 0) {
       res.status(400).json({
         success: false,
         message: 'Missing required fields: title, shortDescription, description, category, and technologies array'
@@ -61,22 +123,26 @@ export const createProject = async (req, res, next) => {
       return;
     }
 
+    let uploadedImages = [];
+
+    if (req.files?.length) {
+      const uploadResult = await uploadFilesToCloudinary(req.files);
+
+      if (!uploadResult.success) {
+        res.status(400).json({
+          success: false,
+          message: 'Image upload failed',
+          error: uploadResult.error
+        });
+        return;
+      }
+
+      uploadedImages = uploadResult.images;
+    }
+
     const project = await Project.create({
-      title,
-      slug,
-      shortDescription,
-      description,
-      category,
-      technologies,
-      status: status || 'Completed',
-      featured: featured || false,
-      liveUrl: liveUrl || '',
-      githubUrl: githubUrl || '',
-      images: images || [],
-      problemStatement: problemStatement || '',
-      features: features || [],
-      challenges: challenges || [],
-      workflow: workflow || []
+      ...projectData,
+      images: uploadedImages
     });
 
     res.status(201).json({
@@ -92,6 +158,11 @@ export const createProject = async (req, res, next) => {
         .join(', ');
     }
 
+    if (error.code === 11000) {
+      error.statusCode = 409;
+      error.message = 'Project title or slug already exists';
+    }
+
     next(error);
   }
 };
@@ -99,18 +170,7 @@ export const createProject = async (req, res, next) => {
 export const updateProject = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const updateData = req.body;
-
-    // Prevent title/slug modification after creation for safety
-    if (updateData.title || updateData.slug) {
-      delete updateData.title;
-      delete updateData.slug;
-    }
-
-    const project = await Project.findByIdAndUpdate(id, updateData, {
-      new: true,
-      runValidators: true
-    });
+    const project = await Project.findById(id);
 
     if (!project) {
       res.status(404).json({
@@ -119,6 +179,68 @@ export const updateProject = async (req, res, next) => {
       });
       return;
     }
+
+    const updateData = buildProjectPayload(req.body);
+
+    if (hasOwnField(req.body, 'title')) {
+      project.title = updateData.title;
+    }
+    if (hasOwnField(req.body, 'slug') && updateData.slug) {
+      project.slug = updateData.slug;
+    }
+    if (hasOwnField(req.body, 'shortDescription')) {
+      project.shortDescription = updateData.shortDescription;
+    }
+    if (hasOwnField(req.body, 'description')) {
+      project.description = updateData.description;
+    }
+    if (hasOwnField(req.body, 'category')) {
+      project.category = updateData.category;
+    }
+    if (hasOwnField(req.body, 'technologies')) {
+      project.technologies = updateData.technologies;
+    }
+    if (hasOwnField(req.body, 'status')) {
+      project.status = updateData.status;
+    }
+    if (hasOwnField(req.body, 'featured')) {
+      project.featured = parseBooleanField(req.body.featured);
+    }
+    if (hasOwnField(req.body, 'liveUrl')) {
+      project.liveUrl = updateData.liveUrl;
+    }
+    if (hasOwnField(req.body, 'githubUrl')) {
+      project.githubUrl = updateData.githubUrl;
+    }
+    if (hasOwnField(req.body, 'problemStatement')) {
+      project.problemStatement = updateData.problemStatement;
+    }
+    if (hasOwnField(req.body, 'features')) {
+      project.features = updateData.features;
+    }
+    if (hasOwnField(req.body, 'challenges')) {
+      project.challenges = updateData.challenges;
+    }
+    if (hasOwnField(req.body, 'workflow')) {
+      project.workflow = updateData.workflow;
+    }
+
+    if (req.files?.length) {
+      const uploadResult = await uploadFilesToCloudinary(req.files);
+
+      if (!uploadResult.success) {
+        res.status(400).json({
+          success: false,
+          message: 'Image upload failed',
+          error: uploadResult.error
+        });
+        return;
+      }
+
+      project.images = [...(project.images || []), ...uploadResult.images];
+    }
+
+    await project.save();
 
     res.status(200).json({
       success: true,
@@ -131,6 +253,11 @@ export const updateProject = async (req, res, next) => {
       error.message = Object.values(error.errors)
         .map((validationError) => validationError.message)
         .join(', ');
+    }
+
+    if (error.code === 11000) {
+      error.statusCode = 409;
+      error.message = 'Project title or slug already exists';
     }
 
     next(error);
@@ -153,9 +280,9 @@ export const deleteProject = async (req, res, next) => {
 
     // Delete associated Cloudinary images
     if (project.images && project.images.length > 0) {
-      const deletePromises = project.images.map((image) =>
-        deleteImageFromCloudinary(image.publicId)
-      );
+      const deletePromises = project.images
+        .filter((image) => image.publicId)
+        .map((image) => deleteImageFromCloudinary(image.publicId));
 
       const results = await Promise.all(deletePromises);
       const failedDeletions = results.filter((result) => !result.success);
@@ -180,7 +307,16 @@ export const deleteProject = async (req, res, next) => {
 
 export const deleteProjectImage = async (req, res, next) => {
   try {
-    const { id, publicId } = req.params;
+    const { id } = req.params;
+    const publicId = req.params.publicId || req.query.publicId;
+
+    if (!publicId) {
+      res.status(400).json({
+        success: false,
+        message: 'Image publicId is required'
+      });
+      return;
+    }
 
     const project = await Project.findById(id);
 
@@ -227,12 +363,11 @@ export const deleteProjectImage = async (req, res, next) => {
 export const uploadProjectImage = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { imageData } = req.body;
 
-    if (!imageData) {
+    if (!req.files?.length) {
       res.status(400).json({
         success: false,
-        message: 'Image data is required'
+        message: 'At least one image file is required'
       });
       return;
     }
@@ -248,7 +383,7 @@ export const uploadProjectImage = async (req, res, next) => {
     }
 
     // Upload to Cloudinary
-    const uploadResult = await uploadImageToCloudinary(imageData);
+    const uploadResult = await uploadFilesToCloudinary(req.files);
 
     if (!uploadResult.success) {
       res.status(400).json({
@@ -260,10 +395,7 @@ export const uploadProjectImage = async (req, res, next) => {
     }
 
     // Add to project
-    project.images.push({
-      url: uploadResult.url,
-      publicId: uploadResult.publicId
-    });
+    project.images.push(...uploadResult.images);
 
     await project.save();
 
@@ -273,6 +405,11 @@ export const uploadProjectImage = async (req, res, next) => {
       data: project
     });
   } catch (error) {
+    if (error.code === 11000) {
+      error.statusCode = 409;
+      error.message = 'Project title or slug already exists';
+    }
+
     next(error);
   }
 };

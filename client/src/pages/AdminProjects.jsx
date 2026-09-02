@@ -21,6 +21,8 @@ export default function AdminProjects() {
   const [authenticated, setAuthenticated] = useState(Boolean(localStorage.getItem('adminSecret')));
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -76,6 +78,12 @@ export default function AdminProjects() {
     }
   }, [authenticated]);
 
+  useEffect(() => {
+    return () => {
+      imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
+    };
+  }, [imagePreviews]);
+
   const resetForm = () => {
     setFormData({
       title: '',
@@ -93,11 +101,15 @@ export default function AdminProjects() {
       challenges: '',
       workflow: ''
     });
+    imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
+    setSelectedImages([]);
+    setImagePreviews([]);
     setEditingId(null);
     setShowForm(false);
   };
 
   const handleEditProject = (project) => {
+    imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
     setFormData({
       title: project.title,
       slug: project.slug,
@@ -114,6 +126,8 @@ export default function AdminProjects() {
       challenges: (project.challenges || []).join('\n'),
       workflow: (project.workflow || []).join('\n')
     });
+    setSelectedImages([]);
+    setImagePreviews([]);
     setEditingId(project._id);
     setShowForm(true);
   };
@@ -121,22 +135,38 @@ export default function AdminProjects() {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
 
-    const projectData = {
-      title: formData.title,
-      slug: formData.slug || undefined,
-      shortDescription: formData.shortDescription,
-      description: formData.description,
-      category: formData.category,
-      technologies: formData.technologies.split(',').map((t) => t.trim()).filter(Boolean),
-      status: formData.status,
-      featured: formData.featured,
-      liveUrl: formData.liveUrl,
-      githubUrl: formData.githubUrl,
-      problemStatement: formData.problemStatement,
-      features: formData.features.split('\n').map((f) => f.trim()).filter(Boolean),
-      challenges: formData.challenges.split('\n').map((c) => c.trim()).filter(Boolean),
-      workflow: formData.workflow.split('\n').map((w) => w.trim()).filter(Boolean)
-    };
+    const projectData = new FormData();
+    projectData.append('title', formData.title);
+    if (formData.slug.trim()) {
+      projectData.append('slug', formData.slug.trim());
+    }
+    projectData.append('shortDescription', formData.shortDescription);
+    projectData.append('description', formData.description);
+    projectData.append('category', formData.category);
+    projectData.append(
+      'technologies',
+      JSON.stringify(formData.technologies.split(',').map((t) => t.trim()).filter(Boolean))
+    );
+    projectData.append('status', formData.status);
+    projectData.append('featured', String(formData.featured));
+    projectData.append('liveUrl', formData.liveUrl);
+    projectData.append('githubUrl', formData.githubUrl);
+    projectData.append('problemStatement', formData.problemStatement);
+    projectData.append(
+      'features',
+      JSON.stringify(formData.features.split('\n').map((f) => f.trim()).filter(Boolean))
+    );
+    projectData.append(
+      'challenges',
+      JSON.stringify(formData.challenges.split('\n').map((c) => c.trim()).filter(Boolean))
+    );
+    projectData.append(
+      'workflow',
+      JSON.stringify(formData.workflow.split('\n').map((w) => w.trim()).filter(Boolean))
+    );
+    selectedImages.forEach((file) => {
+      projectData.append('images', file);
+    });
 
     try {
       if (editingId) {
@@ -178,23 +208,26 @@ export default function AdminProjects() {
   };
 
   const handleUploadImage = async (projectId, e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
 
     try {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        const base64 = event.target?.result;
-        if (base64) {
-          await uploadProjectImage(projectId, base64);
-          alert('Image uploaded successfully');
-          fetchProjects();
-        }
-      };
-      reader.readAsDataURL(file);
+      const imageData = new FormData();
+      files.forEach((file) => imageData.append('images', file));
+      await uploadProjectImage(projectId, imageData);
+      alert('Image uploaded successfully');
+      e.target.value = '';
+      fetchProjects();
     } catch (err) {
       alert(`Error: ${err.response?.data?.message || err.message}`);
     }
+  };
+
+  const handleImageSelection = (e) => {
+    const files = Array.from(e.target.files || []);
+    imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
+    setSelectedImages(files);
+    setImagePreviews(files.map((file) => URL.createObjectURL(file)));
   };
 
   if (!authenticated) {
@@ -397,6 +430,57 @@ export default function AdminProjects() {
                 </div>
 
                 <div>
+                  <label className="block text-sm font-bold text-slate-700">
+                    Project Images
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageSelection}
+                    className="mt-2 w-full rounded border border-blue-500/15 bg-white px-4 py-2 text-slate-900 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20"
+                  />
+                  {imagePreviews.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {imagePreviews.map((preview, index) => (
+                        <img
+                          key={`${preview}-${index}`}
+                          src={preview}
+                          alt={`Selected project preview ${index + 1}`}
+                          className="h-20 w-20 rounded object-cover"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {editingId && (
+                  <div>
+                    <p className="block text-sm font-bold text-slate-700">Existing Images</p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {(projects.find((project) => project._id === editingId)?.images || []).map((image) => (
+                        <div key={image.publicId || image.url} className="relative">
+                          <img
+                            src={image.url || image}
+                            alt="Existing project"
+                            className="h-20 w-20 rounded object-cover"
+                          />
+                          {image.publicId && (
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteImage(editingId, image.publicId)}
+                              className="absolute -right-2 -top-2 rounded-full bg-red-600 px-1.5 py-0.5 text-xs text-white"
+                            >
+                              X
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div>
                   <label className="block text-sm font-bold text-slate-700">Problem Statement</label>
                   <textarea
                     value={formData.problemStatement}
@@ -473,18 +557,20 @@ export default function AdminProjects() {
                           <p className="mb-2 text-sm font-bold text-slate-700">Images:</p>
                           <div className="flex flex-wrap gap-2">
                             {project.images.map((image) => (
-                              <div key={image.publicId} className="relative">
+                              <div key={image.publicId || image.url || image} className="relative">
                                 <img
-                                  src={image.url}
+                                  src={image.url || image}
                                   alt="Project"
                                   className="h-16 w-16 rounded object-cover"
                                 />
-                                <button
-                                  onClick={() => handleDeleteImage(project._id, image.publicId)}
-                                  className="absolute -right-2 -top-2 rounded-full bg-red-600 text-white"
-                                >
-                                  ✕
-                                </button>
+                                {image.publicId && (
+                                  <button
+                                    onClick={() => handleDeleteImage(project._id, image.publicId)}
+                                    className="absolute -right-2 -top-2 rounded-full bg-red-600 text-white"
+                                  >
+                                    ✕
+                                  </button>
+                                )}
                               </div>
                             ))}
                           </div>
@@ -497,6 +583,7 @@ export default function AdminProjects() {
                           <input
                             type="file"
                             accept="image/*"
+                            multiple
                             onChange={(e) => handleUploadImage(project._id, e)}
                             className="mt-2"
                           />

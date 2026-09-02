@@ -101,6 +101,12 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
+            <Link
+              to="/admin/projects"
+              className="rounded px-2.5 py-2 text-xs font-black uppercase tracking-[0.14em] text-blue-100/75 transition hover:bg-white/10 hover:text-white"
+            >
+              Admin
+            </Link>
           </div>
         </div>
       </nav>
@@ -148,6 +154,13 @@ export default function Navbar() {
                   {label}
                 </a>
               ))}
+              <Link
+                to="/admin/projects"
+                className="rounded border border-white/10 bg-white/[0.05] px-4 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-blue-100 transition hover:border-blue-300/30 hover:text-white"
+                onClick={() => setIsOpen(false)}
+              >
+                Admin
+              </Link>
             </div>
           </div>
         </motion.div>

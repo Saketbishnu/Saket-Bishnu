@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const apiBaseUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace(/\/$/, '');
+
 const projectApi = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  baseURL: apiBaseUrl
 });
 
 // Add admin secret to requests if available
@@ -34,9 +36,11 @@ export const deleteProject = (id) => {
 };
 
 export const uploadProjectImage = (id, imageData) => {
-  return projectApi.post(`/projects/${id}/images`, { imageData });
+  return projectApi.post(`/projects/${id}/images`, imageData);
 };
 
 export const deleteProjectImage = (id, publicId) => {
-  return projectApi.delete(`/projects/${id}/images/${publicId}`);
+  return projectApi.delete(`/projects/${id}/images`, {
+    params: { publicId }
+  });
 };
