@@ -6,7 +6,26 @@ import GlassCard from '../ui/GlassCard.jsx';
 
 export default function ProjectCard({ project, index }) {
   const [imageFailed, setImageFailed] = useState(false);
-  const previewImage = project.images?.[0] || project.image;
+
+  // Support both new format (images array with objects) and old format (single image or array)
+  const getPreviewImage = () => {
+    if (project.images && Array.isArray(project.images)) {
+      if (project.images.length > 0) {
+        // New format: { url: '...', publicId: '...' }
+        if (project.images[0].url) {
+          return project.images[0].url;
+        }
+        // Old format: just string
+        if (typeof project.images[0] === 'string') {
+          return project.images[0];
+        }
+      }
+    }
+    // Fallback
+    return project.image || null;
+  };
+
+  const previewImage = getPreviewImage();
 
   return (
     <GlassCard
@@ -58,7 +77,7 @@ export default function ProjectCard({ project, index }) {
           {project.shortDescription}
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
-          {project.techStack.slice(0, 3).map((tag, tagIndex) => (
+          {(project.technologies || project.techStack || []).slice(0, 3).map((tag, tagIndex) => (
             <motion.span
               key={`${tag}-${tagIndex}`}
               whileHover={{ y: -2 }}

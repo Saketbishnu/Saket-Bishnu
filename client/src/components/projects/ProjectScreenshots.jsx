@@ -5,11 +5,31 @@ import ProjectImage from './ProjectImage.jsx';
 
 export default function ProjectScreenshots({ project }) {
   const screenshots = useMemo(() => {
-    const images = project.images?.filter(Boolean) || project.screenshots?.filter(Boolean) || [];
-    const fallback = project.image ? [project.image] : [];
+    let images = [];
 
-    return images.length ? images : fallback;
+    if (project.images && Array.isArray(project.images)) {
+      if (project.images.length > 0) {
+        if (project.images[0].url) {
+          // New format: { url: '...', publicId: '...' }
+          images = project.images.map((img) => img.url).filter(Boolean);
+        } else if (typeof project.images[0] === 'string') {
+          // Old format: array of strings
+          images = project.images.filter(Boolean);
+        }
+      }
+    }
+
+    if (images.length === 0 && project.screenshots) {
+      images = project.screenshots.filter(Boolean);
+    }
+
+    if (images.length === 0 && project.image) {
+      images = [project.image];
+    }
+
+    return images;
   }, [project.image, project.images, project.screenshots]);
+
   const [activeIndex, setActiveIndex] = useState(null);
   const activeImage = activeIndex !== null ? screenshots[activeIndex] : null;
 

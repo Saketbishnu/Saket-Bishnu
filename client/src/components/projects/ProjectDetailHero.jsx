@@ -5,7 +5,22 @@ import NeonButton from '../ui/NeonButton.jsx';
 import ProjectImage from './ProjectImage.jsx';
 
 export default function ProjectDetailHero({ project }) {
-  const heroImage = project.images?.[0] || project.image;
+  // Support both new format (images array with objects) and old format
+  const getHeroImage = () => {
+    if (project.images && Array.isArray(project.images)) {
+      if (project.images.length > 0) {
+        if (project.images[0].url) {
+          return project.images[0].url;
+        }
+        if (typeof project.images[0] === 'string') {
+          return project.images[0];
+        }
+      }
+    }
+    return project.image || null;
+  };
+
+  const heroImage = getHeroImage();
 
   return (
     <motion.section
@@ -31,7 +46,7 @@ export default function ProjectDetailHero({ project }) {
           {project.shortDescription}
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
-          {project.techStack.slice(0, 4).map((item, index) => (
+          {(project.technologies || project.techStack || []).slice(0, 4).map((item, index) => (
             <span
               key={`${item}-${index}`}
               className="max-w-full break-words rounded border border-blue-500/15 bg-blue-500/[0.06] px-3 py-1 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-blue-700 sm:tracking-[0.12em]"

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import PageTransition from '../components/layout/PageTransition.jsx';
 import Home from '../pages/Home.jsx';
 import ProjectDetail from '../pages/ProjectDetail.jsx';
+import AdminProjects from '../pages/AdminProjects.jsx';
 import Resume from '../pages/Resume.jsx';
 
 function AnimatedRoutes() {
@@ -24,6 +25,14 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <ProjectDetail />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/admin/projects"
+          element={
+            <PageTransition>
+              <AdminProjects />
             </PageTransition>
           }
         />
